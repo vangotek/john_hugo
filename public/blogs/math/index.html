@@ -1,35 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width" />
+<link rel="icon" href=/fav.png />
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width">
-<link rel="icon" href=/fav.png type="image/gif">
+<link
+  href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
+  rel="stylesheet"
+/>
+
+type="image/gif">
 
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
->
-<link rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-      media="print" onload="this.media='all'" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="preload"
+  as="style"
+  href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+/>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+  media="print"
+  onload="this.media='all'"
+/>
 <noscript>
   <link
-          href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-          rel="stylesheet">
+    href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    rel="stylesheet"
+  />
 </noscript>
 
 
-<link rel="stylesheet" href="/css/font.css" media="all">
+<link
+  rel="stylesheet"
+  href="/css/font.css"
+  media="all"
+/>
 
 
-
-<meta property="og:url" content="http://localhost:1313/blogs/math/">
-  <meta property="og:site_name" content="Hugo Profile">
+ <meta property="og:url" content="//localhost:1313/blogs/math/">
+  <meta property="og:site_name" content="Groove Tech by John Go">
   <meta property="og:title" content="Render Math With Mathjax">
   <meta property="og:description" content="Mathjax Math equations can be rendered using Mathjax syntax with AMS symbol support.
 Optionally enable this on a per-page basis by adding mathjax: true to your frontmatter.
@@ -45,8 +60,7 @@ $$ | Pr_{x \leftarrow P_{1}} [A(x) = 1] - Pr_{x \leftarrow P_{2}} [A(x) = 1] | &
     <meta property="article:tag" content="Markdown Syntax">
     <meta property="article:tag" content="Mathjax">
     <meta property="article:tag" content="Example">
-
-
+ 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Render Math With Mathjax">
   <meta name="twitter:description" content="Mathjax Math equations can be rendered using Mathjax syntax with AMS symbol support.
@@ -57,65 +71,157 @@ The raw version is:
 $$ | Pr_{x \leftarrow P_{1}} [A(x) = 1] - Pr_{x \leftarrow P_{2}} [A(x) = 1] | &lt; \text{negligible} $$ Write in-line equations with \\( ... \\) , like \( x^n / y \) . It’s easy!">
 
 
-<link rel="stylesheet" href="/bootstrap-5/css/bootstrap.min.css" media="all"><link rel="stylesheet" href="/css/header.css" media="all">
-<link rel="stylesheet" href="/css/footer.css" media="all">
+<link
+  rel="stylesheet"
+  href="/bootstrap-5/css/bootstrap.min.css"
+  media="all"
+/><link
+  rel="stylesheet"
+  href="/css/header.css"
+  media="all"
+/>
+<link
+  rel="stylesheet"
+  href="/css/footer.css"
+  media="all"
+/>
 
 
-<link rel="stylesheet" href="/css/theme.css" media="all">
+<link
+  rel="stylesheet"
+  href="/css/theme.css"
+  media="all"
+/>
 
 <style>
-    :root {
-        --text-color: #343a40;
-        --text-secondary-color: #6c757d;
-        --text-link-color: #007bff;
-        --background-color: #eaedf0;
-        --secondary-background-color: #64ffda1a;
-        --primary-color: #007bff;
-        --secondary-color: #f8f9fa;
-
-         
-        --text-color-dark: #e4e6eb;
-        --text-secondary-color-dark: #b0b3b8;
-        --text-link-color-dark: #ffffff;
-        --background-color-dark: #18191a;
-        --secondary-background-color-dark: #212529;
-        --primary-color-dark: #ffffff;
-        --secondary-color-dark: #212529;
+  :root {
+    --text-color: {
+       {
+        .Site.Params.color.textColor|default "#343a40";
+      }
     }
-    body {
-        font-size: 1rem;
-        font-weight: 400;
-        line-height: 1.5;
-        text-align: left;
+    --text-secondary-color: {
+       {
+        .Site.Params.color.secondaryTextColor|default "#6c757d";
+      }
     }
-
-    html {
-        background-color: var(--background-color) !important;
+    --text-link-color: {
+       {
+        .Site.Params.color.textLinkColor|default
+          (.Site.Params.color.primaryColor | default "#007bff");;
+      }
     }
-
-    body::-webkit-scrollbar {
-        height: 0px;
-        width: 8px;
-        background-color: var(--background-color);
+    --background-color: {
+       {
+        .Site.Params.color.backgroundColor|default "#eaedf0";
+      }
     }
-
-    ::-webkit-scrollbar-track {
-        border-radius: 1rem;
+    --secondary-background-color: {
+       {
+        .Site.Params.color.secondaryBackgroundColor|default "#64ffda1a";
+      }
     }
-
-    ::-webkit-scrollbar-thumb {
-        border-radius: 1rem;
-        background: #b0b0b0;
-        outline: 1px solid var(--background-color);
+    --primary-color: {
+       {
+        .Site.Params.color.primaryColor|default "#007bff";
+      }
+    }
+    --secondary-color: {
+       {
+        .Site.Params.color.secondaryColor|default "#f8f9fa";
+      }
     }
 
-    #search-content::-webkit-scrollbar {
-        width: .5em;
-        height: .1em;
-        background-color: var(--background-color);
+     
+    --text-color-dark: {
+       {
+        .Site.Params.color.darkmode.textColor|default "#e4e6eb";
+      }
     }
+    --text-secondary-color-dark: {
+       {
+        .Site.Params.color.darkmode.secondaryTextColor|default "#b0b3b8";
+      }
+    }
+    --text-link-color-dark: {
+       {
+        .Site.Params.color.darkmode.textLinkColor|default
+          (.Site.Params.color.darkmode.primaryColor | default "#ffffff");;
+      }
+    }
+    --background-color-dark: {
+       {
+        .Site.Params.color.darkmode.backgroundColor|default "#18191a";
+      }
+    }
+    --secondary-background-color-dark: {
+       {
+        .Site.Params.color.darkmode.secondaryBackgroundColor|default "#212529";
+      }
+    }
+    --primary-color-dark: {
+       {
+        .Site.Params.color.darkmode.primaryColor|default "#ffffff";
+      }
+    }
+    --secondary-color-dark: {
+       {
+        .Site.Params.color.darkmode.secondaryColor|default "#212529";
+      }
+    }
+  }
+  body {
+    font-size: {
+       {
+        .Site.Params.font.fontSize|default "1rem";
+      }
+    }
+    font-weight: {
+       {
+        .Site.Params.font.fontWeight|default "400";
+      }
+    }
+    line-height: {
+       {
+        .Site.Params.font.lineHeight|default "1.5";
+      }
+    }
+    text-align: {
+       {
+        .Site.Params.font.textAlign|default "left";
+      }
+    }
+  }
+
+  html {
+    background-color: var(--background-color) !important;
+  }
+
+  body::-webkit-scrollbar {
+    height: 0px;
+    width: 8px;
+    background-color: var(--background-color);
+  }
+
+  ::-webkit-scrollbar-track {
+    border-radius: 1rem;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 1rem;
+    background: #b0b0b0;
+    outline: 1px solid var(--background-color);
+  }
+
+  #search-content::-webkit-scrollbar {
+    width: 0.5em;
+    height: 0.1em;
+    background-color: var(--background-color);
+  }
 </style>
 
+
+</head>
 
 
 <meta name="description" content="">
@@ -125,18 +231,17 @@ $$ | Pr_{x \leftarrow P_{1}} [A(x) = 1] - Pr_{x \leftarrow P_{2}} [A(x) = 1] | &
 <script defer src="/fontawesome-6/all-6.4.2.js"></script>
 
 
-  
-  
+    
+    
 
-  <title>
-Render Math With Mathjax | Hugo Profile
+    <title>
+Render Math With Mathjax | Groove Tech by John Go
+</title>
+  </head>
 
-  </title>
-</head>
-
-<body class="light">
-  
-  
+  <body class="light">
+    
+    
 <script>
     let localStorageValue = localStorage.getItem("pref-theme");
     let mediaQuery = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -188,7 +293,7 @@ Render Math With Mathjax | Hugo Profile
     <nav class="pt-3 navbar navbar-expand-lg animate">
         <div class="container-fluid mx-xs-2 mx-sm-5 mx-md-5 mx-lg-5">
             
-            <a class="navbar-brand primary-font text-wrap" href="/">
+            <a class="navbar-brand primary-font text-wrap" href="//localhost:1313/">
                 
                 <img src="/fav.png" width="30" height="30"
                     class="d-inline-block align-top">
@@ -224,7 +329,7 @@ Render Math With Mathjax | Hugo Profile
 
                     
                     <li class="nav-item navbar-text">
-                        <a class="nav-link" href="/#about" aria-label="about">
+                        <a class="nav-link" href="//localhost:1313/#about" aria-label="about">
                             About Me
                         </a>
                     </li>
@@ -232,7 +337,7 @@ Render Math With Mathjax | Hugo Profile
 
                     
                     <li class="nav-item navbar-text">
-                        <a class="nav-link" href="/#experience"
+                        <a class="nav-link" href="//localhost:1313/#experience"
                             aria-label="experience">
                             Experience
                         </a>
@@ -241,7 +346,7 @@ Render Math With Mathjax | Hugo Profile
 
                     
                     <li class="nav-item navbar-text">
-                        <a class="nav-link" href="/#education"
+                        <a class="nav-link" href="//localhost:1313/#education"
                             aria-label="education">
                             Education
                         </a>
@@ -250,7 +355,7 @@ Render Math With Mathjax | Hugo Profile
 
                     
                     <li class="nav-item navbar-text">
-                        <a class="nav-link" href="/#projects"
+                        <a class="nav-link" href="//localhost:1313/#projects"
                             aria-label="projects">
                             Projects
                         </a>
@@ -259,7 +364,7 @@ Render Math With Mathjax | Hugo Profile
 
                     
                     <li class="nav-item navbar-text">
-                        <a class="nav-link" href="/#achievements"
+                        <a class="nav-link" href="//localhost:1313/#achievements"
                             aria-label="achievements">
                             Achievements
                         </a>
@@ -268,7 +373,7 @@ Render Math With Mathjax | Hugo Profile
 
                     
                     <li class="nav-item navbar-text">
-                        <a class="nav-link" href="/#contact"
+                        <a class="nav-link" href="//localhost:1313/#contact"
                             aria-label="contact">
                             Contact
                         </a>
@@ -393,15 +498,15 @@ Render Math With Mathjax | Hugo Profile
             <h5>Tags</h5>
             <ul class="tags-ul list-unstyled list-inline">
               
-              <li class="list-inline-item"><a href="http://localhost:1313/tags/markdown-syntax"
+              <li class="list-inline-item"><a href="//localhost:1313/tags/markdown-syntax"
                 target="_blank"
               >Markdown syntax</a></li>
               
-              <li class="list-inline-item"><a href="http://localhost:1313/tags/mathjax"
+              <li class="list-inline-item"><a href="//localhost:1313/tags/mathjax"
                 target="_blank"
               >Mathjax</a></li>
               
-              <li class="list-inline-item"><a href="http://localhost:1313/tags/example"
+              <li class="list-inline-item"><a href="//localhost:1313/tags/example"
                 target="_blank"
               >example</a></li>
               
@@ -415,22 +520,22 @@ Render Math With Mathjax | Hugo Profile
             <div class="social-content">
               <ul class="list-inline">
                 <li class="list-inline-item text-center">
-                  <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2flocalhost%3a1313%2fblogs%2fmath%2f">
+                  <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=%2f%2flocalhost%3a1313%2fblogs%2fmath%2f">
                     <i class="fab fa-linkedin"></i>
                   </a>
                 </li>
                 <li class="list-inline-item text-center">
-                  <a target="_blank" href="https://twitter.com/share?text=Render%20Math%20With%20Mathjax&url=http%3a%2f%2flocalhost%3a1313%2fblogs%2fmath%2f">
+                  <a target="_blank" href="https://twitter.com/share?text=Render%20Math%20With%20Mathjax&url=%2f%2flocalhost%3a1313%2fblogs%2fmath%2f">
                     <i class="fab fa-twitter"></i>
                   </a>
                 </li>
                 <li class="list-inline-item text-center">
-                  <a target="_blank" href="https://api.whatsapp.com/send?text=Render%20Math%20With%20Mathjax: http%3a%2f%2flocalhost%3a1313%2fblogs%2fmath%2f">
+                  <a target="_blank" href="https://api.whatsapp.com/send?text=Render%20Math%20With%20Mathjax: %2f%2flocalhost%3a1313%2fblogs%2fmath%2f">
                     <i class="fab fa-whatsapp"></i>
                   </a>
                 </li>
                 <li class="list-inline-item text-center">
-                  <a target="_blank" href='mailto:?subject=Render%20Math%20With%20Mathjax&amp;body=Check%20out%20this%20site http%3a%2f%2flocalhost%3a1313%2fblogs%2fmath%2f'>
+                  <a target="_blank" href='mailto:?subject=Render%20Math%20With%20Mathjax&amp;body=Check%20out%20this%20site %2f%2flocalhost%3a1313%2fblogs%2fmath%2f'>
                     <i class="fa fa-envelope"></i>
                   </a>
                 </li>
@@ -492,8 +597,7 @@ Render Math With Mathjax | Hugo Profile
 <script src="/js/readingTime.js"></script>
 
 
-
-  </div><footer>
+</div><footer>
     
  
  
@@ -687,7 +791,7 @@ Render Math With Mathjax | Hugo Profile
         <div class="col-md-4 text-center">
             
                 <div class="pb-2">
-                    <a href="http://localhost:1313/" title="Hugo Profile">
+                    <a href="//localhost:1313/" title="Groove Tech by John Go">
                         <img alt="Footer logo" src="/fav.png"
                             height="40px" width="40px">
                     </a>
@@ -768,9 +872,17 @@ Render Math With Mathjax | Hugo Profile
 
 
 
-  <section id="search-content" class="py-2">
-    <div class="container" id="search-results"></div>
-  </section>
-</body>
+    <section id="search-content" class="py-2">
+      <div class="container" id="search-results"></div>
+    </section>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        once: true,
+        duration: 600,
+        easing: "ease-out-cubic",
+      });
+    </script>
+  </body>
 </html>

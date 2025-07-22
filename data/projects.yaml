@@ -1,0 +1,5 @@
+- name: Mechanigo
+  tagline: "On-demand services for car and PC repair"
+  image: "/images/mechanigo.png"
+  repo: "https://github.com/yourname/mechanigo"
+  live: "https://mechanigo.ph"
