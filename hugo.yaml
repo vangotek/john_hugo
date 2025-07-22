@@ -83,7 +83,7 @@ params:
   animate: true
 
   theme:
-    # disableThemeToggle: true
+     #disableThemeToggle: true
     # defaultTheme: "light" # dark
 
   font:
@@ -117,13 +117,13 @@ params:
     align: ms-auto # Left: ms-auto | center: mx-auto | right: me-auto | Default: ms-auto
     # brandLogo: "/logo.png" # Logo for the brand | default is the favicon variable
     # showBrandLogo: false # Show brand logo in nav bar | default is true
-    brandName: "Hugo Profile" # Brand name for the brand | default is the title variable
+    brandName: "Groove Tech" # Brand name for the brand | default is the title variable
     disableSearch: false
     # searchPlaceholder: "Search"
     stickyNavBar:
       enable: true
       showOnScrollUp: true
-    enableSeparator: false
+    enableSeparator: true
     menus:
       disableAbout: false
       disableExperience: false
@@ -137,9 +137,9 @@ params:
     enable: true
     intro: "Hi, my name is"
     title: "John."
-    subtitle: "I build things for the web, desktop, mobile."
-    content: "A passionate software developer. I tend to make use of modern technologies to build applications that look great, feel fantastic, and function correctly."
-    image: /images/hero.svg
+    subtitle: "I build software that solves problems."
+    content: "I build things for web, mobile and desktop. I tend to make use of modern technologies to build applications that look great, feel fantastic, and rich in features."
+    image: /images/hero.jpg
     bottomImage:
       enable: true
     # roundImage: true # Make hero image circular | default false
@@ -389,8 +389,8 @@ params:
     enable: true
     # title: "Custom Name"
     items:
-      - title: Hugo Profile
-        content: A highly customizable and mobile first Hugo template for personal portfolio and blog.
+      - title: Civil Regsitrar Automation and Tracking System (CRATS)
+        content: A desktop application for the Local Civil Registrar's Office of Impasug-ong, Bukidnon.
         image: /images/projects/profile.png
         featured:
           name: Demo
@@ -407,8 +407,8 @@ params:
           - icon: fab fa-twitter
             url: https://twitter.com/intent/tweet?text=Check+it+out:&url=https%3A%2F%2Fgithub.com%2Fgurusabarish%2Fhugo-profile
 
-      - title: Image Converter
-        content: A web app to convert image to pdf, png to jpg, png to jpg and png to webp without database using django.
+      - title: Nissan Cebu Central Website
+        content: A website for Nissan Cebu Central, a car dealership in Cebu City, Philippines.
         image: /images/projects/converter.jpg
         featured:
           name: Demo
@@ -420,8 +420,8 @@ params:
           - icon: fab fa-github
             url: https://github.com/gurusabarish/converter
 
-      - title: Hugo Profile V2
-        content: A clean and simple Hugo template for personal portfolio and blog.
+      - title: Payslip System
+        content: A payslip system for the Philippine Statistics Authority - Bukidnon.
         image: /images/projects/profile2.jpg
         featured:
           name: Demo V2
