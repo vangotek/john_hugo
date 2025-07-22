@@ -1,0 +1,58 @@
+{{ if .Site.Params.experience.enable | default false }}
+<section id="experience" class="py-5">
+    <div class="container">
+        <h3 class="text-center">{{ .Site.Params.experience.title | default "Experience" }}</h3>
+        <div class="row justify-content-center">
+            <div class="col-sm-12 col-md-10 col-lg-8 py-5">
+                <div class="accordion" id="experienceAccordion">
+                    {{ range $index, $element := .Site.Params.experience.items }}
+                    <div class="accordion-item bg-white shadow-sm rounded mb-3" data-aos="fade-up"
+                        data-aos-delay="{{ mul $index 50 }}">
+                        <h2 class="accordion-header" id="heading-{{ $index }}">
+                            <button class="accordion-button {{ if ne $index 0 }}collapsed{{ end }} rounded-top"
+                                type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ $index }}"
+                                aria-expanded="{{ if eq $index 0 }}true{{ else }}false{{ end }}"
+                                aria-controls="collapse-{{ $index }}">
+                                {{ .company }}
+                            </button>
+                        </h2>
+                        <div id="collapse-{{ $index }}"
+                            class="accordion-collapse collapse {{ if eq $index 0 }}show{{ end }}"
+                            aria-labelledby="heading-{{ $index }}" data-bs-parent="#experienceAccordion">
+                            <div class="accordion-body rounded-bottom bg-white">
+                                <span class="h5">{{ .job }}</span> –
+                                <a href="{{ .companyUrl }}" target="_blank">{{ .company }}</a>
+                                <div class="pb-2"><small>{{ .date }}</small></div>
+
+                                {{ if .info.enable | default true }}
+                                <div class="pb-2">
+                                    <span data-bs-toggle="tooltip" data-bs-placement="top"
+                                        data-bs-original-title='{{ .info.content | default (printf "Worked as a %s at %s" .job .company) | htmlEscape }}'
+                                        style="cursor:pointer;">
+                                        <i class="fas fa-info-circle fa-xs"></i>
+                                    </span>
+                                </div>
+                                {{ end }}
+
+                                {{ if .featuredLink.enable | default false }}
+                                <div class="py-2">
+                                    <a class="btn btn-outline-primary btn-sm" href="{{ .featuredLink.url }}"
+                                        target="_blank">
+                                        {{ .featuredLink.name | default "Featured Link" }}
+                                    </a>
+                                </div>
+                                {{ end }}
+
+                                <div class="pt-2">
+                                    {{ .content | markdownify }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}

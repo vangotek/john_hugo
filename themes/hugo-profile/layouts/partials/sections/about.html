@@ -1,0 +1,31 @@
+{{ if .Site.Params.about.enable | default false }}
+<section id="about" class="py-0 py-sm-5">
+    <div class="container bg-transparent">
+        <h3 class="text-center bg-transparent" data-aos="fade-up">{{ .Site.Params.about.title }}</h3>
+        <div class="bg-transparent row justify-content-center px-3 py-5">
+            {{ if .Site.Params.about.image }}
+            <div class="col-sm-12 col-md-8 col-lg-4 mb-5 mb-sm-0 mb-md-5 mb-lg-0 d-none d-sm-none d-md-block"
+                data-aos="zoom-in" data-aos-delay="100">
+                <div class="image d-flex px-5">
+                    <img src="{{ .Site.Params.about.image }}" class="img-thumbnail mx-auto rounded-circle" alt="">
+                </div>
+            </div>
+            {{ end }}
+            <div class="col-sm-12 col-md-12 col-lg-8 content" data-aos="fade-left" data-aos-delay="200">
+                {{ .Site.Params.about.content | markdownify }}
+
+                {{ if .Site.Params.about.skills.enable }}
+                <div data-aos="fade-up" data-aos-delay="300">
+                    <h5>{{ .Site.Params.about.skills.title }}</h5>
+                    <div class="d-flex flex-wrap gap-2 mt-3">
+                        {{ range .Site.Params.about.skills.items }}
+                        <span class="badge bg-primary text-light px-3 py-2 fs-6">{{ . | markdownify }}</span>
+                        {{ end }}
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}
