@@ -83,7 +83,7 @@ params:
   animate: true
 
   theme:
-     #disableThemeToggle: true
+    # disableThemeToggle: true
     # defaultTheme: "light" # dark
 
   font:
@@ -367,22 +367,22 @@ params:
     enable: true
     # title: "Custom Name"
     items:
-      - title: Google kickstart runner
-        content: I solved all problems with optimal solution.
+      - title: Resource Speaker
+        content: Refresher training for PhilCris System Operations at LCRO Impasug-ong, Bukidnon.
         url: https://example.com
         image: /images/achievement.jpg
-      - title: Facebook Hackathon Winner
-        content: Developed a product using Artificial Intelligence.
+      - title: PhilSys Short Film Documentary Champion
+        content: Produced an award winning short film documentary about the Philippine Identification System in Bukidnon.
         image: /images/achievement.jpg
-      - title: Hugo Profile
-        content: Developed a theme and getting 1K+ downloads per month.
+      - title: eSports Champion
+        content: eSports Champion for the Regional PSA Sportsfest 2022.
         url: "https://github.com/gurusabarish/hugo-profile"
         image: /images/achievement.jpg
-      - title: Microsoft Imagine Runner
-        content: We are developed a product which can help others.
-      - title: Google Summer of Code
-        content: Contributed to a open source project.
-        url: https://example.com
+      - title: Dart Tournament 2nd Place
+        content: 2nd Place in Dart Tournament for the Regional PSA Sportsfest 2022.
+  #    - title: Google Summer of Code
+  #      content: Contributed to a open source project.
+  #      url: https://example.com
 
   # projects
   projects:
@@ -396,9 +396,11 @@ params:
           name: Demo
           link: https://hugo-profile.netlify.app
         badges:
-          - "Hugo"
-          - "Bootstrap"
-          - "Javascript"
+          - "Flutter"
+          - "Dart"
+          - "Go Lang"
+          - "PostgreSQL"
+          - "GitHub"
         links:
           - icon: fa fa-envelope
             url: mailto:?subject=Hugo%20Profile%20Template&body=Check%20it%20out:%20https%3a%2f%2fhugo-profile.netlify.app%2fblog%2fmarkdown-syntax%2f
@@ -414,8 +416,10 @@ params:
           name: Demo
           link: https://django-converter.herokuapp.com
         badges:
-          - "Django"
-          - "Bootstrap"
+          - "HTML"
+          - "CSS"
+          - "Javascript"
+          - "JQuery"
         links:
           - icon: fab fa-github
             url: https://github.com/gurusabarish/converter
@@ -427,9 +431,12 @@ params:
           name: Demo V2
           link: https://hugo-profile-2.netlify.app
         badges:
-          - "Hugo"
-          - "Bootstrap"
+          - "PhP"
+          - "HTML"
           - "Javascript"
+          - "CSS"
+          - "Bootstrap"
+          - "MySQL"
         links:
           - icon: fab fa-github
             url: https://github.com/gurusabarish/HugoProfileV2
