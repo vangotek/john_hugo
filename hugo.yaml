@@ -394,44 +394,44 @@ params:
       - title: Civil Regsitrar Automation and Tracking System (CRATS)
         content: A desktop application for the Local Civil Registrar's Office of Impasug-ong, Bukidnon.
         image: /images/projects/profile.png
-        featured:
-          name: Demo
-          link: https://hugo-profile.netlify.app
+       # featured:
+       #   name: Demo
+       #   link: https://hugo-profile.netlify.app
         badges:
           - "Flutter"
           - "Dart"
           - "Go Lang"
           - "PostgreSQL"
           - "GitHub"
-        links:
-          - icon: fa fa-envelope
-            url: mailto:?subject=Hugo%20Profile%20Template&body=Check%20it%20out:%20https%3a%2f%2fhugo-profile.netlify.app%2fblog%2fmarkdown-syntax%2f
-          - icon: fab fa-github
-            url: https://github.com/gurusabarish/hugo-profile
-          - icon: fab fa-twitter
-            url: https://twitter.com/intent/tweet?text=Check+it+out:&url=https%3A%2F%2Fgithub.com%2Fgurusabarish%2Fhugo-profile
+       # links:
+       #   - icon: fa fa-envelope
+       #     url: mailto:?subject=Hugo%20Profile%20Template&body=Check%20it%20out:%20https%3a%2f%2fhugo-profile.netlify.app%2fblog%2fmarkdown-syntax%2f
+       #   - icon: fab fa-github
+       #     url: https://github.com/gurusabarish/hugo-profile
+       #   - icon: fab fa-twitter
+       #     url: https://twitter.com/intent/tweet?text=Check+it+out:&url=https%3A%2F%2Fgithub.com%2Fgurusabarish%2Fhugo-profile
 
       - title: Nissan Cebu Central Website
         content: A website for Nissan Cebu Central, a car dealership in Cebu City, Philippines.
         image: /images/projects/converter.jpg
         featured:
-          name: Demo
+          name: Live Demo
           link: /Nissan
         badges:
           - "HTML"
           - "CSS"
           - "Javascript"
           - "JQuery"
-        links:
-          - icon: fab fa-github
-            url: https://github.com/gurusabarish/converter
+      #  links:
+      #    - icon: fab fa-github
+      #      url: https://github.com/gurusabarish/converter
 
       - title: Payslip System
         content: A payslip system for the Philippine Statistics Authority - Bukidnon.
         image: /images/projects/profile2.jpg
-        featured:
-          name: Demo V2
-          link: https://hugo-profile-2.netlify.app
+       # featured:
+        #  name: Demo V2
+       #   link: https://hugo-profile-2.netlify.app
         badges:
           - "PhP"
           - "HTML"
@@ -439,9 +439,21 @@ params:
           - "CSS"
           - "Bootstrap"
           - "MySQL"
-        links:
-          - icon: fab fa-github
-            url: https://github.com/gurusabarish/HugoProfileV2
+       # links:
+       #   - icon: fab fa-github
+       #     url: https://github.com/gurusabarish/HugoProfileV2
+      - title: John Go CV 1.0
+        content: A personal CV website made with Cuppertino and Fluttter Web.
+        image: /images/projects/cv.jpg
+        featured:
+          name: Live Demo
+          link: https://vangotek.github.io/johngocv/
+        badges:
+          - "Flutter"
+          - "Dart"
+          - "Cuppertino"
+     #   links:
+      #    - icon: fa fa-envelope
 
   #Contact
   contact:
@@ -457,13 +469,13 @@ params:
     #   messageCaption: "Enter your message here"
     #   messageRows: 5
 
-  footer:
-    recentPosts:
-      path: "blogs"
-      count: 3
-      title: Recent Posts
-      enable: true
-      disableFeaturedImage: false
+ # footer:
+ #   recentPosts:
+ #     path: "blogs"
+ #     count: 3
+  #    title: Recent Posts
+  #    enable: true
+  #    disableFeaturedImage: false
     socialNetworks:
       github: https://github.com
       linkedin: https://linkedin.com
