@@ -1,5 +1,5 @@
-#baseURL: "https://vangotek.github.io/john_hugo/"
-baseURL: "/"
+baseURL: "https://vangotek.github.io/john_hugo/"
+#baseURL: "/"
 
 languageCode: "en-us"
 title: "<Van_Go/>"
