@@ -196,7 +196,7 @@ params:
         companyUrl: "https://mccb.com.ph"
         date: "Jun 2025 - present"
         featuredLink:
-          enable: true
+          enable: false
           name: "View the project"
           url: "https://example.com"
         content: |
@@ -226,7 +226,7 @@ params:
         info:
           enable: false
         featuredLink:
-          enable: true
+          enable: false
           url: "https://example.com"
         content: |
           Former focal person and information systems analyst for the Philippine Identification System Division - Bukidnon at [PSA](https://psa.gov.ph) 
@@ -252,10 +252,10 @@ params:
 
       - job: "Software Developer"
         company: "Independent Contractor"
-        companyUrl: "https://example.com"
+        # companyUrl: "https://example.com"
         date: "Jun 2023 - Present"
         featuredLink:
-          enable: true
+          enable: false
           url: "https://example.com"
         content: |
           Currently working the same time with my current job as a software developer at my own company (Independent Contractor). Altough not yet registered as a business,
@@ -269,7 +269,7 @@ params:
 
       - job: "Web Developer / Graphics Designer"
         company: "Nissan Cebu Central"
-        companyUrl: "https://example.com"
+        #companyUrl: "https://example.com"
         date: "May 2018 - Aug 2019"
         content: |
           Worked as a web developer and graphics designer at [Nissan Cebu Central](https://example.com) in Cebu City, Philippines.
@@ -288,10 +288,10 @@ params:
 
       - job: "Android Developer / Graphics Designer"
         company: "Go Large Graphics Inc"
-        companyUrl: "https://example.com"
+        companyUrl: "https://mygolarge.com"
         date: "May 2018 - Aug 2019"
         content: |
-          Worked as an Android developer and graphics designer at [Go Large Graphics Inc.](https://example.com) in Cebu City, Philippines.
+          Worked as an Android developer and graphics designer at [Go Large Graphics Inc.](https://mygolarge.com) in Cebu City, Philippines.
           With the duties and responsibilities of an Android developer and graphics designer.
 
           - Developed a mobile application for Go Large Graphics.
@@ -308,10 +308,10 @@ params:
 
       - job: "Software Developer"
         company: "Independent Contractor"
-        companyUrl: "https://example.com"
+        #companyUrl: "https://example.com"
         date: "Nov 2011 - Jul 2013"
         content: |
-          Worked as a software developer at [Independent Contractor](https://example.com) in Cebu City, Philippines.
+          Worked as a software developer at [Independent Contractor] in Cebu City, Philippines.
           With the duties and responsibilities of a software developer.
 
           - Developed a mobile application for a local business.
@@ -361,7 +361,7 @@ params:
         # GPA: "4.2 out of 5.0"
         featuredLink:
           enable: false
-          url: "https://example.com"
+          # url: "https://example.com"
         date: "1999 - 2003"
 
   # Achievements
@@ -374,7 +374,7 @@ params:
         #  url: https://example.com
         image: /images/achievement.png
       - title: PhilSys Short Film Documentary Champion
-        content: Produced an award winning short film documentary about the Philippine Identification System in Bukidnon.
+        content: Produced an award winning short film documentary about the Philippine Identification System implementation in Bukidnon.
         image: /images/achievement.png
       - title: eSports Champion
         content: eSports Champion for the Regional PSA Sportsfest 2022.
