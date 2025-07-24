@@ -33,34 +33,34 @@ markup:
       unsafe: true
 
 #Menus:
- # main:
-    #- identifier: blog
-     # name: Blog
-     # title: Blog posts
-     # url: /blogs
-     # weight: 1
-    #- identifier: gallery
-     # name: Gallery
-     # title: Blog posts
-     # url: /gallery
-     # weight: 2
-    #Dropdown menu
-    # - identifier: dropdown
-    #   title: Example dropdown menu
-    #   name: Dropdown
-    #   weight: 3
-    # - identifier: dropdown1
-    #   title: example dropdown 1
-    #   name: example 1
-    #   url: /#
-    #   parent: dropdown
-    #   weight: 1
-    # - identifier: dropdown2
-    #   title: example dropdown 2
-    #   name: example 2
-    #   url: /#
-    #   parent: dropdown
-    #   weight: 2
+# main:
+#- identifier: blog
+# name: Blog
+# title: Blog posts
+# url: /blogs
+# weight: 1
+#- identifier: gallery
+# name: Gallery
+# title: Blog posts
+# url: /gallery
+# weight: 2
+#Dropdown menu
+# - identifier: dropdown
+#   title: Example dropdown menu
+#   name: Dropdown
+#   weight: 3
+# - identifier: dropdown1
+#   title: example dropdown 1
+#   name: example 1
+#   url: /#
+#   parent: dropdown
+#   weight: 1
+# - identifier: dropdown2
+#   title: example dropdown 2
+#   name: example 2
+#   url: /#
+#   parent: dropdown
+#   weight: 2
 
 params:
   title: "VanGo"
@@ -85,7 +85,7 @@ params:
   animate: true
 
   theme:
-    # disableThemeToggle: true
+    disableThemeToggle: false
     # defaultTheme: "light" # dark
 
   font:
@@ -146,7 +146,7 @@ params:
       enable: true
     # roundImage: true # Make hero image circular | default false
     button:
-      enable: true
+      enable: false
       name: "Resume"
       url: "#"
       download: true
@@ -154,12 +154,12 @@ params:
     socialLinks:
       fontAwesomeIcons:
         - icon: fab fa-github
-          url: https://example.com
-        - icon: fab fa-x-twitter
-          url: https://example.com
-      customIcons:
-        - icon: /fav.png
-          url: "https://example.com"
+          url: https://github.com/vangotek
+      #  - icon: fab fa-x-twitter
+      #    url: https://example.com
+      #customIcons:
+      # - icon: /fav.png
+      #   url: "https://example.com"
 
   # About
   about:
@@ -371,15 +371,15 @@ params:
     items:
       - title: Resource Speaker
         content: Refresher training for PhilCris System Operations at LCRO Impasug-ong, Bukidnon.
-        url: https://example.com
-        image: /images/achievement.jpg
+        #  url: https://example.com
+        image: /images/achievement.png
       - title: PhilSys Short Film Documentary Champion
         content: Produced an award winning short film documentary about the Philippine Identification System in Bukidnon.
-        image: /images/achievement.jpg
+        image: /images/achievement.png
       - title: eSports Champion
         content: eSports Champion for the Regional PSA Sportsfest 2022.
-        url: "https://github.com/gurusabarish/hugo-profile"
-        image: /images/achievement.jpg
+        # url: "https://github.com/gurusabarish/hugo-profile"
+        image: /images/achievement.png
       - title: Dart Tournament 2nd Place
         content: 2nd Place in Dart Tournament for the Regional PSA Sportsfest 2022.
   #    - title: Google Summer of Code
@@ -394,22 +394,22 @@ params:
       - title: Civil Regsitrar Automation and Tracking System (CRATS)
         content: A desktop application for the Local Civil Registrar's Office of Impasug-ong, Bukidnon.
         image: /images/projects/profile.png
-       # featured:
-       #   name: Demo
-       #   link: https://hugo-profile.netlify.app
+        # featured:
+        #   name: Demo
+        #   link: https://hugo-profile.netlify.app
         badges:
           - "Flutter"
           - "Dart"
           - "Go Lang"
           - "PostgreSQL"
           - "GitHub"
-       # links:
-       #   - icon: fa fa-envelope
-       #     url: mailto:?subject=Hugo%20Profile%20Template&body=Check%20it%20out:%20https%3a%2f%2fhugo-profile.netlify.app%2fblog%2fmarkdown-syntax%2f
-       #   - icon: fab fa-github
-       #     url: https://github.com/gurusabarish/hugo-profile
-       #   - icon: fab fa-twitter
-       #     url: https://twitter.com/intent/tweet?text=Check+it+out:&url=https%3A%2F%2Fgithub.com%2Fgurusabarish%2Fhugo-profile
+        # links:
+        #   - icon: fa fa-envelope
+        #     url: mailto:?subject=Hugo%20Profile%20Template&body=Check%20it%20out:%20https%3a%2f%2fhugo-profile.netlify.app%2fblog%2fmarkdown-syntax%2f
+        #   - icon: fab fa-github
+        #     url: https://github.com/gurusabarish/hugo-profile
+        #   - icon: fab fa-twitter
+        #     url: https://twitter.com/intent/tweet?text=Check+it+out:&url=https%3A%2F%2Fgithub.com%2Fgurusabarish%2Fhugo-profile
 
       - title: Nissan Cebu Central Website
         content: A website for Nissan Cebu Central, a car dealership in Cebu City, Philippines.
@@ -425,13 +425,12 @@ params:
       #  links:
       #    - icon: fab fa-github
       #      url: https://github.com/gurusabarish/converter
-
       - title: Payslip System
         content: A payslip system for the Philippine Statistics Authority - Bukidnon.
         image: /images/projects/profile2.jpg
-       # featured:
+        # featured:
         #  name: Demo V2
-       #   link: https://hugo-profile-2.netlify.app
+        #   link: https://hugo-profile-2.netlify.app
         badges:
           - "PhP"
           - "HTML"
@@ -439,9 +438,9 @@ params:
           - "CSS"
           - "Bootstrap"
           - "MySQL"
-       # links:
-       #   - icon: fab fa-github
-       #     url: https://github.com/gurusabarish/HugoProfileV2
+        # links:
+        #   - icon: fab fa-github
+        #     url: https://github.com/gurusabarish/HugoProfileV2
       - title: John Go CV 1.0
         content: A personal CV website made with Cuppertino and Fluttter Web.
         image: /images/projects/cv.jpg
@@ -452,7 +451,7 @@ params:
           - "Flutter"
           - "Dart"
           - "Cuppertino"
-     #   links:
+      #   links:
       #    - icon: fa fa-envelope
 
   #Contact
@@ -469,13 +468,13 @@ params:
     #   messageCaption: "Enter your message here"
     #   messageRows: 5
 
- # footer:
- #   recentPosts:
- #     path: "blogs"
- #     count: 3
-  #    title: Recent Posts
-  #    enable: true
-  #    disableFeaturedImage: false
+    # footer:
+    #   recentPosts:
+    #     path: "blogs"
+    #     count: 3
+    #    title: Recent Posts
+    #    enable: true
+    #    disableFeaturedImage: false
     socialNetworks:
       github: https://github.com
       linkedin: https://linkedin.com
