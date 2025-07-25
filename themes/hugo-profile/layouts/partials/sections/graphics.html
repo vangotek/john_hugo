@@ -1,0 +1,92 @@
+{{ with site.GetPage "page" "gallery" }}
+<section id="gallery" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-4" data-aos="fade-up" data-aos-duration="800">{{ .Title }}</h2>
+        <p class="text-center" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">{{ .Params.description }}
+        </p>
+
+        <div id="gallery-section" class="row g-3 justify-content-center">
+            {{ range $index, $image := first 4 .Params.galleryImages }}
+            <div class="col-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-duration="600"
+                data-aos-delay="{{ add 400 (mul $index 150) }}">
+                <figure>
+                    <div class="gallery-img-wrapper">
+                        <img src="{{ .src }}" alt="Gallery image" loading="lazy" data-aos="fade-in"
+                            data-aos-duration="400" data-aos-delay="{{ add 600 (mul $index 150) }}" />
+                    </div>
+                    <figcaption class="text-center small mt-2 text-muted" data-aos="fade-up" data-aos-duration="500"
+                        data-aos-delay="{{ add 800 (mul $index 150) }}">{{ .caption }}</figcaption>
+                </figure>
+            </div>
+            {{ end }}
+        </div>
+
+        <div class="text-center mt-4" data-aos="fade-up" data-aos-duration="600" data-aos-delay="1200">
+            <a href="{{ .RelPermalink }}" class="btn btn-outline-primary" data-aos="pulse" data-aos-duration="1000"
+                data-aos-delay="1400">See More</a>
+        </div>
+
+        {{ if .Params.viewer }}
+        {{ $viewerOptions := .Params.viewerOptions | default (dict) }}
+        <script src="https://unpkg.com/viewerjs/dist/viewer.min.js"></script>
+        <link rel="stylesheet" href="https://unpkg.com/viewerjs/dist/viewer.min.css" />
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Initialize viewer after AOS animations complete
+                setTimeout(function () {
+                    const gallery = document.getElementById('gallery-section');
+                    new Viewer(gallery, {{ $viewerOptions | jsonify | safeJS }});
+                }, 2000);
+            });
+        </script>
+        {{ end }}
+    </div>
+</section>
+
+<style>
+    .gallery-img-wrapper {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        /* Square, change to 4/3 or 16/9 if needed */
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    .gallery-img-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+        transition: transform 0.3s ease;
+    }
+
+    .gallery-img-wrapper:hover {
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        transform: translateY(-2px);
+    }
+
+    .gallery-img-wrapper:hover img {
+        transform: scale(1.05);
+    }
+
+    /* AOS enhancement for gallery images */
+    [data-aos="zoom-in"] .gallery-img-wrapper {
+        transform-origin: center center;
+    }
+
+    /* Smooth caption animation */
+    figcaption {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    [data-aos="fade-up"].aos-animate+figcaption,
+    figcaption.aos-animate {
+        opacity: 1;
+    }
+</style>
+{{ end }}

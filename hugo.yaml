@@ -32,18 +32,18 @@ markup:
     renderer:
       unsafe: true
 
-#Menus:
-# main:
-#- identifier: blog
-# name: Blog
-# title: Blog posts
-# url: /blogs
-# weight: 1
-#- identifier: gallery
-# name: Gallery
-# title: Blog posts
-# url: /gallery
-# weight: 2
+Menus:
+ main:
+  - identifier: blog
+    name: Blog
+    title: Blog posts
+    url: /blogs
+    weight: 1
+  - identifier: gallery
+    name: Gallery
+    title: Blog posts
+    url: /gallery
+    weight: 2
 #Dropdown menu
 # - identifier: dropdown
 #   title: Example dropdown menu
@@ -454,6 +454,10 @@ params:
       #   links:
       #    - icon: fa fa-envelope
 
+  graphics:
+    enable: true
+    url: /gallery
+    title: "Graphics Design"
   #Contact
   contact:
     enable: true
@@ -468,13 +472,13 @@ params:
     #   messageCaption: "Enter your message here"
     #   messageRows: 5
 
-    # footer:
-    #   recentPosts:
-    #     path: "blogs"
-    #     count: 3
-    #    title: Recent Posts
-    #    enable: true
-    #    disableFeaturedImage: false
+    footer:
+       recentPosts:
+         path: "blogs"
+         count: 3
+         title: Recent Posts
+         enable: true
+         disableFeaturedImage: false
     socialNetworks:
       github: https://github.com
       linkedin: https://linkedin.com

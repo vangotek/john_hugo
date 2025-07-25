@@ -7,6 +7,75 @@
 <script src="{{ .Site.Params.staticPath }}/viewer/viewer.min.js"></script>
 {{ end }}
 
+<style>
+    /* Fix image display and make layout adaptive */
+    .card-group .row {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+        justify-content: center;
+    }
+
+    .card-group .col-md-4 {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .card {
+        height: 280px;
+        overflow: hidden;
+        border-radius: 8px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        transition: transform 0.3s ease;
+        cursor: pointer;
+    }
+
+    .card:hover img {
+        transform: scale(1.05);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+        .card-group .row {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .card-group .row {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.8rem;
+        }
+
+        .card {
+            height: 240px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .card-group .row {
+            grid-template-columns: 1fr;
+        }
+
+        .card {
+            height: 220px;
+        }
+    }
+</style>
+
 {{ end }}
 
 {{ define "title" }}
@@ -25,7 +94,7 @@
             {{ range .Params.galleryImages }}
             <div class="col-md-4 p-0 m-0">
                 <div class="card p-0 m-0 border-0">
-                    <img class="w-100 {{if .Params.viewer | default true}}viewer-enabled-image{{end}}" height="280px" src="{{ .src }}">
+                    <img class="w-100 {{if .Params.viewer | default true}}viewer-enabled-image{{end}}" src="{{ .src }}">
                 </div>
             </div>
             {{ end }}
@@ -35,7 +104,7 @@
 
 {{ if .Params.viewer | default true }}
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         var viewer = new Viewer(document.getElementById('list-page'), {
             ...{{ .Params.viewerOptions }}
         });
