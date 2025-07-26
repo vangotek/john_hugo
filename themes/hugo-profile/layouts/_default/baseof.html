@@ -8,7 +8,7 @@
   {{ if .Site.Params.customCSS }}
   <link rel="stylesheet" href="{{ .Site.Params.staticPath }}/style.css" />
   {{ end }}
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
 
   <title>{{- block "title" . }} {{- end }}</title>
 </head>
@@ -33,13 +33,7 @@
   <section id="search-content" class="py-2">
     <div class="container" id="search-results"></div>
   </section>
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init({
-      duration: 800,
-      once: false,
-      offset: 100
-    });</script>
+
 </body>
 
 </html>
