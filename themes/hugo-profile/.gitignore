@@ -1,6 +1,7 @@
 /config.yaml
 /content
 /static/images
+/static/images/graphics
 .vscode
 
 ### Hugo ###

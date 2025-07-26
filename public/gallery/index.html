@@ -28,7 +28,7 @@
 
  <meta property="og:url" content="http://localhost:1313/john_hugo/gallery/">
   <meta property="og:title" content="Graphics Design">
-  <meta property="og:description" content="Some of my Projects">
+  <meta property="og:description" content="Some of my graphics design projects">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:published_time" content="2022-06-25T18:35:46+05:30">
@@ -36,7 +36,7 @@
  
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Graphics Design">
-  <meta name="twitter:description" content="Some of my Projects">
+  <meta name="twitter:description" content="Some of my graphics design projects">
 
 
 <link rel="stylesheet" href="../bootstrap-5/css/bootstrap.min.css" media="all" /><link rel="stylesheet" href="../css/header.css" media="all" />
@@ -173,7 +173,6 @@
 
 <meta name="description" content="Graphics Design of &lt;Van_Go/&gt;">
 
-
 <link rel="stylesheet" href="../css/gallery.css">
 <link rel="stylesheet" href="../viewer/viewer.min.css">
 <script src="../viewer/viewer.min.js"></script>
@@ -199,6 +198,8 @@
         overflow: hidden;
         border-radius: 8px;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
+        background: #f8f9fa;
+        position: relative;
     }
 
     .card:hover {
@@ -211,8 +212,13 @@
         height: 100%;
         object-fit: cover;
         object-position: center;
-        transition: transform 0.3s ease;
+        transition: transform 0.3s ease, opacity 0.3s ease;
         cursor: pointer;
+        opacity: 0;
+    }
+
+    .card img.loaded {
+        opacity: 1;
     }
 
     .card:hover img {
@@ -220,7 +226,38 @@
     }
 
      
-    @media (max-width: 992px) {
+    .card::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 40px;
+        height: 40px;
+        margin: -20px 0 0 -20px;
+        border: 3px solid #f3f3f3;
+        border-top: 3px solid #007bff;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        z-index: 1;
+    }
+
+    .card img.loaded+.card::before,
+    .card:has(img.loaded)::before {
+        display: none;
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+     
+    @media (max-width: 1200px) {
         .card-group .row {
             grid-template-columns: repeat(3, 1fr);
         }
@@ -240,11 +277,64 @@
     @media (max-width: 480px) {
         .card-group .row {
             grid-template-columns: 1fr;
+            gap: 0.6rem;
         }
 
         .card {
             height: 220px;
         }
+    }
+
+    .category-filters {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .filter-btn {
+        padding: 8px 16px;
+        border: 1px solid #ddd;
+        background: white;
+        cursor: pointer;
+        border-radius: 20px;
+        transition: all 0.3s ease;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .filter-btn:hover {
+        background: #f8f9fa;
+        border-color: #007bff;
+        transform: translateY(-1px);
+    }
+
+    .filter-btn.active {
+        background: #007bff;
+        color: white;
+        border-color: #007bff;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+    }
+
+    .gallery-item {
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .gallery-item.hidden {
+        display: none;
+    }
+
+     
+    .gallery-item.filtering {
+        opacity: 0.5;
+        transform: scale(0.95);
+    }
+
+     
+    .card img[src*="data:image/svg+xml"] {
+        opacity: 0.7;
     }
 </style>
 
@@ -410,19 +500,9 @@ Graphics Design | &lt;Van_Go/&gt;
                     
                     
                     <li class="nav-item navbar-text">
-                        <a class="nav-link" href="../blogs" title="Blog posts">
+                        <a class="nav-link" href="../gallery" title="Graphics Design Projects">
                             
-                            Blog
-                        </a>
-                    </li>
-                    
-                    
-                    
-                    
-                    <li class="nav-item navbar-text">
-                        <a class="nav-link" href="../gallery" title="Blog posts">
-                            
-                            Gallery
+                            Graphics Design
                         </a>
                     </li>
                     
@@ -439,46 +519,2287 @@ Graphics Design | &lt;Van_Go/&gt;
 <div id="content">
 <div class="container pt-5" id="list-page">
     <h2 class="text-center pb-2">Graphics Design</h2>
-    <h6 class="text-center">Some of my Projects</h6>
+    <h6 class="text-center">Some of my graphics design projects</h6>
     <div class="row p-4">
         
     </div>
+
+    
+    
+    <div class="category-filters">
+        <button class="filter-btn active" data-category="all">All</button>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <button class="filter-btn" data-category="Banners">Banners</button>
+        
+        <button class="filter-btn" data-category="Billboard">Billboard</button>
+        
+        <button class="filter-btn" data-category="Booth">Booth</button>
+        
+        <button class="filter-btn" data-category="Decals">Decals</button>
+        
+        <button class="filter-btn" data-category="DressUp">DressUp</button>
+        
+        <button class="filter-btn" data-category="Lanyard">Lanyard</button>
+        
+        <button class="filter-btn" data-category="Social Media">Social Media</button>
+        
+        <button class="filter-btn" data-category="Uniforms">Uniforms</button>
+        
+        <button class="filter-btn" data-category="Vip Cards">Vip Cards</button>
+        
+    </div>
+    
+
     <div class="card-group p-4">
         <div class="row justify-content-center">
             
-            <div class="col-md-4 p-0 m-0">
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Uniforms">
                 <div class="card p-0 m-0 border-0">
-                    <img class="w-100 viewer-enabled-image" src="../images/graphics/1.jpg">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505099/NCA_-_NV350_Shirt_BLACK_copy_hxpifl.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505099/NCA_-_NV350_Shirt_BLACK_copy_hxpifl.jpg"
+                        alt="test image" loading="lazy" decoding="async">
+                    
                 </div>
             </div>
             
-            <div class="col-md-4 p-0 m-0">
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Uniforms">
                 <div class="card p-0 m-0 border-0">
-                    <img class="w-100 viewer-enabled-image" src="../images/graphics/2.png">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505106/NCA_-_TShirt_Final_Terra__WHITE_TEXT_aknigd.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505106/NCA_-_TShirt_Final_Terra__WHITE_TEXT_aknigd.jpg"
+                        alt="test image" loading="lazy" decoding="async">
+                    
                 </div>
             </div>
             
-            <div class="col-md-4 p-0 m-0">
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Uniforms">
                 <div class="card p-0 m-0 border-0">
-                    <img class="w-100 viewer-enabled-image" src="../images/graphics/3.png">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505100/NCA_-_TShirt_Final_Terra__BLACK_TEXT_kgnvx5.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505100/NCA_-_TShirt_Final_Terra__BLACK_TEXT_kgnvx5.jpg"
+                        alt="test image" loading="lazy" decoding="async">
+                    
                 </div>
             </div>
             
-            <div class="col-md-4 p-0 m-0">
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Uniforms">
                 <div class="card p-0 m-0 border-0">
-                    <img class="w-100 viewer-enabled-image" src="../images/graphics/4.png">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505099/NCA_-_TShirt_Final_Navara__WHITE_TEXT_vjbukn.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505099/NCA_-_TShirt_Final_Navara__WHITE_TEXT_vjbukn.jpg"
+                        alt="test image" loading="lazy" decoding="async">
+                    
                 </div>
             </div>
             
-            <div class="col-md-4 p-0 m-0">
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Uniforms">
                 <div class="card p-0 m-0 border-0">
-                    <img class="w-100 viewer-enabled-image" src="../images/graphics/5.png">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505099/NCA_-_TShirt_Final_Navara_nqbkri.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505099/NCA_-_TShirt_Final_Navara_nqbkri.jpg"
+                        alt="test image" loading="lazy" decoding="async">
+                    
                 </div>
             </div>
             
-            <div class="col-md-4 p-0 m-0">
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Vip Cards">
                 <div class="card p-0 m-0 border-0">
-                    <img class="w-100 viewer-enabled-image" src="../images/graphics/6.png">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505028/1_w5vtqd.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505028/1_w5vtqd.jpg"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Vip Cards">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505030/3_aqpmqo.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505030/3_aqpmqo.jpg"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Vip Cards">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505028/2_m7iz5g.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505028/2_m7iz5g.jpg"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Vip Cards">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505031/4_euhneb.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505031/4_euhneb.jpg"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Other">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505034/2_kk9ce9.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505034/2_kk9ce9.jpg"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Billboard">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505033/1_glxzyu.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505033/1_glxzyu.jpg"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Decals">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505031/1_ipogcf.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505031/1_ipogcf.jpg"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Decals">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505032/2_w8s8up.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505032/2_w8s8up.jpg"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Decals">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505032/3_qvsaer.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505032/3_qvsaer.jpg"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Decals">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505032/4_uwi94l.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505032/4_uwi94l.jpg"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Decals">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505032/5_iwf2az.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505032/5_iwf2az.jpg"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Decals">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505033/6_pg3ypi.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505033/6_pg3ypi.jpg"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Decals">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505033/7_anxtvt.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505033/7_anxtvt.jpg"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="DressUp">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505033/1_pbetl8.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505033/1_pbetl8.jpg"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="DressUp">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505034/2_ool8ku.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505034/2_ool8ku.jpg"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="DressUp">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505034/4_vry8fa.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505034/4_vry8fa.jpg"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Lanyard">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505034/2_f7jfqc.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505034/2_f7jfqc.jpg"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Lanyard">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505034/1_gt6tmq.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505034/1_gt6tmq.jpg"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Booth">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505031/1_f95lrt.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505031/1_f95lrt.jpg"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Booth">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505029/2_tmw5ad.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505029/2_tmw5ad.jpg"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Banners">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505033/5_tw1h43.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505033/5_tw1h43.jpg"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Banners">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505030/4_pfrz7r.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505030/4_pfrz7r.jpg"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Banners">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505030/6_bpyqem.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505030/6_bpyqem.jpg"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Banners">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505030/3_gcpro8.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505030/3_gcpro8.jpg"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Banners">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505029/1_b7mcon.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505029/1_b7mcon.jpg"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Banners">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505029/2_c9ns2r.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505029/2_c9ns2r.jpg"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505099/9_mhsltd.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505099/9_mhsltd.png"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505099/8_w0jt68.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505099/8_w0jt68.png"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505099/7_wphl3o.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505099/7_wphl3o.png"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505098/6_fyo002.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505098/6_fyo002.png"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505098/5_aq407u.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505098/5_aq407u.png"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505098/6_fyo002.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505098/6_fyo002.png"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505098/5_aq407u.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505098/5_aq407u.png"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505098/43_bjojdq.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505098/43_bjojdq.png"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505093/42_stjkhs.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505093/42_stjkhs.png"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505093/41_ogqtwf.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505093/41_ogqtwf.png"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505093/40_bystqv.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505093/40_bystqv.png"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505093/4_u3z0fh.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505093/4_u3z0fh.png"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505093/38_lkv6lf.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505093/38_lkv6lf.png"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505093/39_zco6ee.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505093/39_zco6ee.png"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505092/37_xf6b75.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505092/37_xf6b75.png"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505092/36_pnm2w5.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505092/36_pnm2w5.png"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505092/35_sozdmj.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505092/35_sozdmj.png"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505088/34_e8f2md.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505088/34_e8f2md.png"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505085/33_vsbsat.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505085/33_vsbsat.png"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505085/32_th5rel.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505085/32_th5rel.png"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505085/31_czxbue.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505085/31_czxbue.png"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505085/29_zrpysd.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505085/29_zrpysd.png"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505084/3_lxpigj.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505084/3_lxpigj.png"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505084/30_ohmxts.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505084/30_ohmxts.png"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505084/28_aj6hbr.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505084/28_aj6hbr.png"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505084/27_gdbah1.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505084/27_gdbah1.png"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505084/26_g9v3rz.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505084/26_g9v3rz.png"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505084/25_am3bxl.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505084/25_am3bxl.png"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505084/24_pvr1lb.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505084/24_pvr1lb.png"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505075/23_uymxkg.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505075/23_uymxkg.png"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505053/22_nho1wg.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505053/22_nho1wg.png"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505043/18_t7kt5z.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505043/18_t7kt5z.png"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505042/21_inosfz.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505042/21_inosfz.png"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505042/20_wqechx.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505042/20_wqechx.png"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505042/2_ogojw9.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505042/2_ogojw9.png"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505042/19_oerndx.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505042/19_oerndx.png"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505042/17_psx7kf.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505042/17_psx7kf.png"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505042/16_azkbay.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505042/16_azkbay.jpg"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505041/15_nyj13l.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505041/15_nyj13l.jpg"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505041/12_x1h913.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505041/12_x1h913.jpg"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505041/13_cwsvqz.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505041/13_cwsvqz.png"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505035/1_rcnjhv.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505035/1_rcnjhv.jpg"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505035/11_enrdnl.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505035/11_enrdnl.png"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="Social Media">
+                <div class="card p-0 m-0 border-0">
+                    
+                    <img class="w-100 viewer-enabled-image" src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/v1753505035/10_r7v0ba.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505035/10_r7v0ba.png"
+                        alt="Gallery image" loading="lazy" decoding="async">
+                    
                 </div>
             </div>
             
@@ -489,8 +2810,119 @@ Graphics Design | &lt;Van_Go/&gt;
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        var viewer = new Viewer(document.getElementById('list-page'), {
-            ...{"title":false}
+        let viewer = null;
+
+        
+        const images = document.querySelectorAll('.card img');
+        let loadedImages = 0;
+
+        images.forEach(img => {
+            
+            img.addEventListener('load', function () {
+                this.classList.add('loaded');
+                loadedImages++;
+
+                
+                if ((loadedImages >= Math.min(4, images.length) || loadedImages === images.length) && !viewer) {
+                    initializeViewer();
+                }
+            });
+
+            
+            img.addEventListener('error', function () {
+                this.style.background = '#f8f9fa';
+                this.style.display = 'flex';
+                this.style.alignItems = 'center';
+                this.style.justifyContent = 'center';
+                this.alt = 'Image not found';
+                this.src = 'data:image/svg+xml;charset=UTF-8,%3Csvg width="400" height="280" xmlns="http://www.w3.org/2000/svg"%3E%3Crect width="100%25" height="100%25" fill="%23f8f9fa"/%3E%3Ctext x="50%25" y="50%25" font-family="Arial, sans-serif" font-size="14" fill="%236c757d" text-anchor="middle" dy=".3em"%3EImage not found%3C/text%3E%3C/svg%3E';
+                this.classList.add('loaded'); 
+                loadedImages++;
+            });
+
+            
+            if (img.complete) {
+                if (img.naturalHeight !== 0) {
+                    img.classList.add('loaded');
+                    loadedImages++;
+                } else {
+                    
+                    img.dispatchEvent(new Event('error'));
+                }
+            }
+        });
+
+        
+        setTimeout(() => {
+            if (!viewer) {
+                initializeViewer();
+            }
+        }, 2000);
+
+        function initializeViewer() {
+            viewer = new Viewer(document.getElementById('list-page'), {
+                url: 'data-viewer-src',
+                title: function (image) {
+                    return image.alt || 'Gallery Image';
+                },
+                toolbar: {
+                    zoomIn: 1,
+                    zoomOut: 1,
+                    oneToOne: 1,
+                    reset: 1,
+                    prev: 1,
+                    play: {
+                        show: 1,
+                        size: 'large',
+                    },
+                    next: 1,
+                    rotateLeft: 1,
+                    rotateRight: 1,
+                    flipHorizontal: 1,
+                    flipVertical: 1,
+                }
+            });
+        }
+
+        
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function () {
+                const category = this.getAttribute('data-category');
+
+                
+                filterBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                
+                galleryItems.forEach(item => {
+                    item.classList.add('filtering');
+                });
+
+                
+                setTimeout(() => {
+                    galleryItems.forEach(item => {
+                        const itemCategory = item.getAttribute('data-category');
+                        item.classList.remove('filtering');
+
+                        if (category === 'all' || itemCategory === category) {
+                            item.classList.remove('hidden');
+                        } else {
+                            item.classList.add('hidden');
+                        }
+                    });
+
+                    
+                    if (viewer) {
+                        viewer.destroy();
+                        setTimeout(() => {
+                            initializeViewer();
+                        }, 100);
+                    }
+                }, 150);
+            });
         });
     });
 </script>
@@ -552,6 +2984,15 @@ Graphics Design | &lt;Van_Go/&gt;
 
 
 
+
+
+
+<!-- cloudinary -->
+<script src="https://unpkg.com/cloudinary-core@2.13.0/cloudinary-core-shrinkwrap.js" integrity="sha384-0bQduxVhZMs6xfvcPH9osdUIw44hjF8EahHuQBdyN6Rryk8tgyFO80Yz5d14F+5d" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    var cl = cloudinary.Cloudinary.new({cloud_name: "dimo050t"}); 
+    cl.responsive();
+</script>
 
 
 

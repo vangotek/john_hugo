@@ -6,36 +6,118 @@
         </p>
 
         <div id="gallery-section" class="row g-3 justify-content-center">
-            {{ range $index, $image := first 4 .Params.galleryImages }}
-            <div class="col-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-duration="600"
+            {{ if .Params.galleryImages }}
+            {{ range $index, $image := first 8 (shuffle .Params.galleryImages) }}
+            <div class="col-6 col-md-4 col-lg-3 gallery-item" data-aos="zoom-in" data-aos-duration="600"
                 data-aos-delay="{{ add 400 (mul $index 150) }}">
                 <figure>
                     <div class="gallery-img-wrapper">
-                        <img src="{{ .src }}" alt="Gallery image" loading="lazy" data-aos="fade-in"
-                            data-aos-duration="400" data-aos-delay="{{ add 600 (mul $index 150) }}" />
+                        {{ $imageSrc := .src }}
+                        {{ if hasPrefix $imageSrc "https://res.cloudinary.com/" }}
+                        <!-- Full Cloudinary URLs - optimize them -->
+                        {{ $baseUrl := $imageSrc }}
+                        {{ $parts := split $baseUrl "/upload/" }}
+                        {{ if eq (len $parts) 2 }}
+                        {{ $beforeUpload := index $parts 0 }}
+                        {{ $afterUpload := index $parts 1 }}
+
+                        <!-- Create optimized thumbnail -->
+                        {{ $thumbnailUrl := printf "%s/upload/c_fill,w_300,h_300,q_auto,f_auto,dpr_auto/%s"
+                        $beforeUpload $afterUpload }}
+
+                        <!-- Create optimized full-size image -->
+                        {{ $fullUrl := printf "%s/upload/q_auto,f_auto,w_1200,dpr_auto/%s" $beforeUpload $afterUpload }}
+
+                        <img src="{{ $thumbnailUrl }}" data-viewer-src="{{ $fullUrl }}"
+                            alt="{{ .title | default .caption | default " Gallery image" }}" loading="lazy"
+                            decoding="async" width="300" height="300" data-aos="fade-in" data-aos-duration="400"
+                            data-aos-delay="{{ add 600 (mul $index 150) }}"
+                            onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhmOWZhIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzZjNzU3ZCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlIG5vdCBmb3VuZDwvdGV4dD48L3N2Zz4='" />
+                        {{ else }}
+                        <!-- Fallback if URL parsing fails -->
+                        <img src="{{ $imageSrc }}" data-viewer-src="{{ $imageSrc }}"
+                            alt="{{ .title | default .caption | default " Gallery image" }}" loading="lazy"
+                            decoding="async" width="300" height="300" data-aos="fade-in" data-aos-duration="400"
+                            data-aos-delay="{{ add 600 (mul $index 150) }}"
+                            onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhmOWZhIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzZjNzU3ZCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlIG5vdCBmb3VuZDwvdGV4dD48L3N2Zz4='" />
+                        {{ end }}
+                        {{ else }}
+                        <!-- Local/static images or other URLs -->
+                        {{ if not (hasPrefix $imageSrc "http") }}
+                        {{ $imageSrc = printf "/images/%s" $imageSrc }}
+                        {{ end }}
+                        <img src="{{ $imageSrc }}" data-viewer-src="{{ $imageSrc }}"
+                            alt="{{ .title | default .caption | default " Gallery image" }}" loading="lazy"
+                            decoding="async" width="300" height="300" data-aos="fade-in" data-aos-duration="400"
+                            data-aos-delay="{{ add 600 (mul $index 150) }}"
+                            onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhmOWZhIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzZjNzU3ZCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlIG5vdCBmb3VuZDwvdGV4dD48L3N2Zz4='" />
+                        {{ end }}
                     </div>
+                    {{ if .caption }}
                     <figcaption class="text-center small mt-2 text-muted" data-aos="fade-up" data-aos-duration="500"
                         data-aos-delay="{{ add 800 (mul $index 150) }}">{{ .caption }}</figcaption>
+                    {{ end }}
                 </figure>
+            </div>
+            {{ end }}
+            {{ else }}
+            <div class="col-12 text-center">
+                <p class="text-muted">No gallery images found. Please check your gallery configuration.</p>
             </div>
             {{ end }}
         </div>
 
+        {{ if gt (len .Params.galleryImages) 8 }}
         <div class="text-center mt-4" data-aos="fade-up" data-aos-duration="600" data-aos-delay="1200">
             <a href="{{ .RelPermalink }}" class="btn btn-outline-primary" data-aos="pulse" data-aos-duration="1000"
                 data-aos-delay="1400">See More</a>
         </div>
+        {{ end }}
 
         {{ if .Params.viewer }}
-        {{ $viewerOptions := .Params.viewerOptions | default (dict) }}
         <script src="https://unpkg.com/viewerjs/dist/viewer.min.js"></script>
         <link rel="stylesheet" href="https://unpkg.com/viewerjs/dist/viewer.min.css" />
         <script>
             document.addEventListener('DOMContentLoaded', function () {
-                // Initialize viewer after AOS animations complete
+                // Progressive image loading
+                const images = document.querySelectorAll('.gallery-img-wrapper img');
+                images.forEach(img => {
+                    img.addEventListener('load', function () {
+                        this.classList.add('loaded');
+                    });
+
+                    // If image is already loaded
+                    if (img.complete) {
+                        img.classList.add('loaded');
+                    }
+                });
+
                 setTimeout(function () {
                     const gallery = document.getElementById('gallery-section');
-                    new Viewer(gallery, {{ $viewerOptions | jsonify | safeJS }});
+                    if (gallery && gallery.children.length > 0) {
+                        var viewer = new Viewer(gallery, {
+                            url: 'data-viewer-src',
+                            title: function (image) {
+                                return image.alt || 'Gallery Image';
+                            },
+                            toolbar: {
+                                zoomIn: 1,
+                                zoomOut: 1,
+                                oneToOne: 1,
+                                reset: 1,
+                                prev: 1,
+                                play: {
+                                    show: 1,
+                                    size: 'large',
+                                },
+                                next: 1,
+                                rotateLeft: 1,
+                                rotateRight: 1,
+                                flipHorizontal: 1,
+                                flipVertical: 1,
+                            }
+                        });
+                    }
                 }, 2000);
             });
         </script>
@@ -48,11 +130,12 @@
         position: relative;
         width: 100%;
         aspect-ratio: 1 / 1;
-        /* Square, change to 4/3 or 16/9 if needed */
         overflow: hidden;
         border-radius: 8px;
         box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
         transition: box-shadow 0.3s ease, transform 0.3s ease;
+        background: #f8f9fa;
+        cursor: pointer;
     }
 
     .gallery-img-wrapper img {
@@ -62,6 +145,7 @@
         object-position: center;
         display: block;
         transition: transform 0.3s ease;
+        will-change: transform;
     }
 
     .gallery-img-wrapper:hover {
@@ -73,12 +157,10 @@
         transform: scale(1.05);
     }
 
-    /* AOS enhancement for gallery images */
     [data-aos="zoom-in"] .gallery-img-wrapper {
         transform-origin: center center;
     }
 
-    /* Smooth caption animation */
     figcaption {
         opacity: 0;
         transition: opacity 0.3s ease;
@@ -86,6 +168,35 @@
 
     [data-aos="fade-up"].aos-animate+figcaption,
     figcaption.aos-animate {
+        opacity: 1;
+    }
+
+    .gallery-item {
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    @media (max-width: 768px) {
+        .gallery-img-wrapper {
+            border-radius: 6px;
+        }
+
+        .col-6 {
+            padding: 0.5rem;
+        }
+    }
+
+    /* Loading state */
+    .gallery-img-wrapper img[src*="data:image/svg+xml"] {
+        opacity: 0.7;
+    }
+
+    /* Progressive loading effect */
+    .gallery-img-wrapper img {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .gallery-img-wrapper img.loaded {
         opacity: 1;
     }
 </style>

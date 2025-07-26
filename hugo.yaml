@@ -34,14 +34,14 @@ markup:
 
 Menus:
  main:
-  - identifier: blog
-    name: Blog
-    title: Blog posts
-    url: /blogs
-    weight: 1
+ # - identifier: blog
+ #   name: Blog
+ #   title: Blog posts
+ #   url: /blogs
+ #   weight: 1
   - identifier: gallery
-    name: Gallery
-    title: Blog posts
+    name: Graphics Design
+    title: Graphics Design Projects
     url: /gallery
     weight: 2
 #Dropdown menu
@@ -76,7 +76,8 @@ params:
   # If you want to load dynamically responsive images from Cloudinary
   # This requires your images to be uploaded + hosted on Cloudinary
   # Uncomment and change YOUR_CLOUD_NAME to the Cloud Name in your Cloudinary console
-  # cloudinary_cloud_name: "YOUR_CLOUD_NAME"
+  #environment: "development"
+  cloudinary_cloud_name: "dimo050t"
 
   # Whether to add mathjax support on all pages. Alternatively, you can opt-in per page by adding `mathjax: true` in the frontmatter.
   mathjax: false
