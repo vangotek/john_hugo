@@ -8,7 +8,7 @@ layout: "gallery"
 galleryImages:
 
 #uniforms
- - src: "https://res.cloudinary.com/dimo050t7/image/upload/l_fav_tyildl,w_100,c_scale,o_70,g_south_east,x_10,y_10,fl_layer_apply/v1753505099/NCA_-_NV350_Shirt_BLACK_copy_hxpifl.jpg"
+ - src: "https://res.cloudinary.com/dimo050t7/image/upload/t_My Logo/v1753505099/NCA_-_NV350_Shirt_BLACK_copy_hxpifl.jpg"
  #  caption: "test image"
    category: "Uniforms"
  - src: "https://res.cloudinary.com/dimo050t7/image/upload/v1753505106/NCA_-_TShirt_Final_Terra__WHITE_TEXT_aknigd.jpg"
