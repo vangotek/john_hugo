@@ -36,7 +36,7 @@ galleryImages:
  
 
 #billboard
- - src: "https://res.cloudinary.com/dimo050t7/image/upload/v1753505034/2_kk9ce9.jpg"
+ - src: "https://res.cloudinary.com/dimo050t7/image/upload/l_My%20Brand:fav_tyildl/c_scale,fl_relative,h_0.5/o_05/fl_layer_apply,g_center/2_kk9ce9.jpg"
    catergory: "Billboard"
  - src: "https://res.cloudinary.com/dimo050t7/image/upload/v1753505033/1_glxzyu.jpg"
    category: "Billboard"
