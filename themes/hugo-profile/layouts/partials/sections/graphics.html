@@ -22,7 +22,7 @@
                         {{ $afterUpload := index $parts 1 }}
 
                         <!-- Create optimized thumbnail -->
-                        {{ $thumbnailUrl := printf "%s/upload/c_fill,w_300,h_300,q_auto,f_auto,dpr_auto/%s"
+                        {{ $thumbnailUrl := printf "%s/upload/c_limit,w_150,h_100,q_auto,f_auto,dpr_auto/%s"
                         $beforeUpload $afterUpload }}
 
                         <!-- Create optimized full-size image -->
