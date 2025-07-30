@@ -167,342 +167,416 @@
   }
 </style>
 
+ 
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <style>
+       
 
+       
+      .navbar {
+        background-color: rgba(255, 255, 255, 0.1) !important;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+         
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+          opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+      }
 
-    
-        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-        <style>
-             
+       
+      header {
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+          opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+      }
 
-             
+       
+      header .nav-link {
+        transition: color 0.2s ease !important;
+      }
 
+       
+      header.nav-up,
+      header.scrolled,
+      header[style*="transform: translateY(-100%)"],
+      header[style*="display: none"],
+      .navbar.nav-up,
+      .navbar.scrolled {
+        transform: translateY(-100%) !important;
+        opacity: 0 !important;
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+          opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+      }
 
-             
+       
+      header.nav-down,
+      header.show,
+      header:not(.nav-up):not(.scrolled),
+      .navbar.nav-down,
+      .navbar.show,
+      .navbar:not(.nav-up):not(.scrolled) {
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+          opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+      }
 
+       
+      .showHeaderOnTop {
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+          opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease !important;
+      }
 
+       
+      .navbar-brand,
+      .navbar-nav .nav-link {
+        transition: color 0.2s ease, opacity 0.2s ease !important;
+      }
 
-             
-            body.dark,
-            body.dark * {
-                --bs-body-bg: #0d0030;
-                --bs-body-color: #FDB927;
-                --bs-emphasis-color: #552583;
-                --bs-secondary-color: rgba(173, 181, 189, 0.75);
-                --bs-tertiary-color: rgba(173, 181, 189, 0.5);
-                --bs-primary-text-emphasis: #6ea8fe;
-                --bs-secondary-text-emphasis: #a7acb1;
-                --bs-success-text-emphasis: #75b798;
-                --bs-info-text-emphasis: #6edff6;
-                --bs-warning-text-emphasis: #ffda6a;
-                --bs-danger-text-emphasis: #ea868f;
-                --bs-light-text-emphasis: #f8f9fa;
-                --bs-dark-text-emphasis: #dee2e6;
-                --bs-link-color: #6ea8fe;
-                --bs-link-hover-color: #8bb9fe;
-                --bs-border-color: #495057;
-                --bs-border-color-translucent: rgba(255, 255, 255, 0.15);
-            }
+       
 
-             
-            body.dark {
-                background-color: var(--bs-body-bg) !important;
-                color: var(--bs-body-color) !important;
-            }
+       
+       
 
-             
-            body.dark h1,
-            body.dark h2,
-            body.dark h3,
-            body.dark h4,
-            body.dark h5,
-            body.dark h6 {
-                color: var(--bs-emphasis-color) !important;
-            }
+       
+       
 
-            body.dark p,
-            body.dark span,
-            body.dark li,
-            body.dark div:not(.btn):not(.badge) {
-                color: var(--bs-body-color) !important;
-            }
+       
 
-             
-            body.dark a {
-                color: var(--bs-link-color) !important;
-            }
+      header.nav-up,
+      .navbar.nav-up {
+        transform: translateY(-20px) scale(0.98) !important;
+        opacity: 0 !important;
+      }
 
-            body.dark a:hover,
-            body.dark a:focus {
-                color: var(--bs-link-hover-color) !important;
-            }
+       
 
-             
-            body.dark .navbar {
-                --bs-navbar-color: var(--bs-emphasis-color);
-                --bs-navbar-hover-color: var(--bs-link-hover-color);
-                --bs-navbar-brand-color: var(--bs-emphasis-color);
-                --bs-navbar-brand-hover-color: var(--bs-link-hover-color);
-            }
+       
 
-            body.dark .nav-link {
-                color: var(--bs-emphasis-color) !important;
-            }
+       
+      body.dark,
+      body.dark * {
+        --bs-body-bg: #220831;
+        --bs-body-color: #dedede;
+        --bs-emphasis-color: #fdb927;
+        --bs-secondary-color: rgba(173, 181, 189, 0.75);
+        --bs-tertiary-color: rgba(173, 181, 189, 0.5);
+        --bs-primary-text-emphasis: #6ea8fe;
+        --bs-secondary-text-emphasis: #a7acb1;
+        --bs-success-text-emphasis: #75b798;
+        --bs-info-text-emphasis: #6edff6;
+        --bs-warning-text-emphasis: #ffda6a;
+        --bs-danger-text-emphasis: #ea868f;
+        --bs-light-text-emphasis: #f8f9fa;
+        --bs-dark-text-emphasis: #dee2e6;
+        --bs-link-color: #6ea8fe;
+        --bs-link-hover-color: #8bb9fe;
+        --bs-border-color: #495057;
+        --bs-border-color-translucent: rgba(255, 255, 255, 0.15);
+      }
 
-            body.dark .nav-link:hover,
-            body.dark .nav-link:focus {
-                color: var(--bs-link-hover-color) !important;
-            }
+       
+      body.dark {
+        background-color: var(--bs-body-bg) !important;
+        color: var(--bs-body-color) !important;
+      }
 
-             
-            body.dark .card {
-                --bs-card-bg: #36326633;
-                background-color: var(--bs-card-bg) !important;
-                border-color: var(--bs-border-color) !important;
-                color: var(--bs-body-color) !important;
-            }
+       
+      body.dark h1,
+      body.dark h2,
+      body.dark h3,
+      body.dark h4,
+      body.dark h5,
+      body.dark h6 {
+        color: var(--bs-emphasis-color) !important;
+      }
 
-             
-            body.dark .form-control,
-            body.dark .form-select,
-            body.dark input,
-            body.dark textarea {
-                background-color: #2d3748 !important;
-                border-color: var(--bs-border-color) !important;
-                color: var(--bs-emphasis-color) !important;
-            }
+      body.dark p,
+      body.dark span,
+      body.dark li,
+      body.dark div:not(.btn):not(.badge) {
+        color: var(--bs-body-color) !important;
+      }
 
-            body.dark .form-control::placeholder {
-                color: var(--bs-secondary-color) !important;
-            }
+       
+      body.dark a {
+        color: var(--bs-link-color) !important;
+      }
 
-            body.dark .form-control:focus {
-                background-color: #374151 !important;
-                border-color: var(--bs-link-color) !important;
-                color: var(--bs-emphasis-color) !important;
-                box-shadow: 0 0 0 0.25rem rgba(110, 168, 254, 0.25) !important;
-            }
+      body.dark a:hover,
+      body.dark a:focus {
+        color: var(--bs-link-hover-color) !important;
+      }
 
-             
-            body.dark .btn {
-                --bs-btn-color: var(--bs-emphasis-color);
-                --bs-btn-border-color: var(--bs-border-color);
-            }
+       
+      body.dark .navbar {
+        --bs-navbar-color: var(--bs-emphasis-color);
+        --bs-navbar-hover-color: var(--bs-link-hover-color);
+        --bs-navbar-brand-color: var(--bs-emphasis-color);
+        --bs-navbar-brand-hover-color: var(--bs-link-hover-color);
+      }
 
-            body.dark .btn-primary {
-                --bs-btn-bg: #552583;
-                --bs-btn-border-color: #0d6efd;
-                --bs-btn-hover-bg: #0b5ed7;
-                --bs-btn-hover-border-color: #0a58ca;
-            }
+      body.dark .nav-link {
+        color: var(--bs-emphasis-color) !important;
+      }
 
-             
-            body.dark .dropdown-menu {
-                --bs-dropdown-bg: #2d3748;
-                --bs-dropdown-border-color: var(--bs-border-color);
-                --bs-dropdown-color: var(--bs-body-color);
-                --bs-dropdown-link-color: var(--bs-body-color);
-                --bs-dropdown-link-hover-color: var(--bs-emphasis-color);
-                --bs-dropdown-link-hover-bg: #374151;
-            }
+      body.dark .nav-link:hover,
+      body.dark .nav-link:focus {
+        color: var(--bs-link-hover-color) !important;
+      }
 
-             
-            body.dark #profileHeader {
-                background-color: rgba(33, 37, 41, 0.10) !important;
-                backdrop-filter: blur(20px) !important;
-                -webkit-backdrop-filter: blur(10px) !important;
-            }
+       
+      body.dark .card {
+        --bs-card-bg: #36326633;
+        background-color: var(--bs-card-bg) !important;
+        border-color: var(--bs-border-color) !important;
+        color: var(--bs-body-color) !important;
+      }
 
-             
-            body.dark #search {
-                background-color: #374151 !important;
-                border-color: var(--bs-border-color) !important;
-                color: var(--bs-emphasis-color) !important;
-            }
+       
+      body.dark .form-control,
+      body.dark .form-select,
+      body.dark input,
+      body.dark textarea {
+        background-color: #2d3748 !important;
+        border-color: var(--bs-border-color) !important;
+        color: var(--bs-emphasis-color) !important;
+      }
 
-            body.dark #search::placeholder {
-                color: var(--bs-secondary-color) !important;
-            }
+      body.dark .form-control::placeholder {
+        color: var(--bs-secondary-color) !important;
+      }
 
-             
-            body.dark .text-muted {
-                color: var(--bs-secondary-color) !important;
-            }
+      body.dark .form-control:focus {
+        background-color: #374151 !important;
+        border-color: var(--bs-link-color) !important;
+        color: var(--bs-emphasis-color) !important;
+        box-shadow: 0 0 0 0.25rem rgba(110, 168, 254, 0.25) !important;
+      }
 
-            body.dark .text-white {
-                color: var(--bs-emphasis-color) !important;
-            }
+       
+      body.dark .btn {
+        --bs-btn-color: var(--bs-emphasis-color);
+        --bs-btn-border-color: var(--bs-border-color);
+      }
 
-             
-            body.dark .border,
-            body.dark hr {
-                border-color: var(--bs-border-color) !important;
-            }
+      body.dark .btn-primary {
+        --bs-btn-bg: #552583;
+        --bs-btn-border-color: #0d6efd;
+        --bs-btn-hover-bg: #0b5ed7;
+        --bs-btn-hover-border-color: #0a58ca;
+      }
 
-             
-            body.dark #theme-toggle {
-                background: transparent;
-                border: 1px solid var(--bs-border-color);
-                color: var(--bs-emphasis-color);
-                border-radius: 0.375rem;
-                padding: 0.5rem;
-            }
+       
+      body.dark .dropdown-menu {
+        --bs-dropdown-bg: #2d3748;
+        --bs-dropdown-border-color: var(--bs-border-color);
+        --bs-dropdown-color: var(--bs-body-color);
+        --bs-dropdown-link-color: var(--bs-body-color);
+        --bs-dropdown-link-hover-color: var(--bs-emphasis-color);
+        --bs-dropdown-link-hover-bg: #374151;
+      }
 
-            body.dark #theme-toggle:hover {
-                background-color: #374151;
-                border-color: var(--bs-link-color);
-            }
+       
+      body.dark #profileHeader {
+        background-color: rgba(0, 0, 0, 0.1) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+      }
 
-             
-             
+       
+      body.dark #search {
+        background-color: #374151 !important;
+        border-color: var(--bs-border-color) !important;
+        color: var(--bs-emphasis-color) !important;
+      }
 
-             
-            body.dark .accordion-button {
-                background-color: #343a40 !important;
-                color: #ffffff !important;
-                border-color: #495057 !important;
-            }
+      body.dark #search::placeholder {
+        color: var(--bs-secondary-color) !important;
+      }
 
-            body.dark .accordion-button:not(.collapsed) {
-                background-color: #495057 !important;
-                color: #ffffff !important;
-            }
+       
+      body.dark .text-muted {
+        color: var(--bs-secondary-color) !important;
+      }
 
-            body.dark .accordion-button:focus {
-                box-shadow: 0 0 0 0.25rem rgba(110, 168, 254, 0.25) !important;
-            }
+      body.dark .text-white {
+        color: var(--bs-emphasis-color) !important;
+      }
 
-            body.dark .accordion-button::after {
-                filter: invert(1) !important;
-                 
-            }
+       
+      body.dark .border,
+      body.dark hr {
+        border-color: var(--bs-border-color) !important;
+      }
 
-             
-            body.dark .accordion-body {
-                background-color: #2d3748 !important;
-                color: #e2e8f0 !important;
-                border-color: #495057 !important;
-            }
+       
+      body.dark #theme-toggle {
+        background: transparent;
 
-             
-            body.dark .accordion-item {
-                background-color: #343a40 !important;
-                border-color: #495057 !important;
-            }
+        color: var(--bs-emphasis-color);
+      }
 
-             
-            body.dark .accordion-body h1,
-            body.dark .accordion-body h2,
-            body.dark .accordion-body h3,
-            body.dark .accordion-body h4,
-            body.dark .accordion-body h5,
-            body.dark .accordion-body h6 {
-                color: #ffffff !important;
-            }
+      body.dark #theme-toggle:hover {
+        background-color: #374151;
+        border-color: var(--bs-link-color);
+      }
 
-            body.dark .accordion-body p,
-            body.dark .accordion-body span,
-            body.dark .accordion-body div,
-            body.dark .accordion-body li {
-                color: #e2e8f0 !important;
-            }
+       
+       
 
-            body.dark .accordion-body a {
-                color: #6ea8fe !important;
-            }
+       
+      body.dark .accordion-button {
+        background-color: #343a40 !important;
+        color: #ffffff !important;
+        border-color: #495057 !important;
+      }
 
-            body.dark .accordion-body a:hover {
-                color: #8bb9fe !important;
-            }
+      body.dark .accordion-button:not(.collapsed) {
+        background-color: #495057 !important;
+        color: #ffffff !important;
+      }
 
-             
-             
-            body.dark .badge.bg-primary,
-            body.dark .badge-primary {
-                background-color: #552583 !important;
-                color: #FDB927 !important;
-            }
+      body.dark .accordion-button:focus {
+        box-shadow: 0 0 0 0.25rem rgba(110, 168, 254, 0.25) !important;
+      }
 
-             
-            body.dark .badge.bg-secondary,
-            body.dark .badge-secondary {
-                background-color: #6c757d !important;
-                color: #ffffff !important;
-            }
+      body.dark .accordion-button::after {
+        filter: invert(1) !important;
+         
+      }
 
-             
-            body.dark .badge.bg-success,
-            body.dark .badge-success {
-                background-color: #198754 !important;
-                color: #ffffff !important;
-            }
+       
+      body.dark .accordion-body {
+        background-color: #2d3748 !important;
+        color: #e2e8f0 !important;
+        border-color: #495057 !important;
+      }
 
-             
-            body.dark .badge.bg-danger,
-            body.dark .badge-danger {
-                background-color: #dc3545 !important;
-                color: #ffffff !important;
-            }
+       
+      body.dark .accordion-item {
+        background-color: #343a40 !important;
+        border-color: #495057 !important;
+      }
 
-             
-            body.dark .badge.bg-warning,
-            body.dark .badge-warning {
-                background-color: #fd7e14 !important;
-                color: #000000 !important;
-                 
-            }
+       
+      body.dark .accordion-body h1,
+      body.dark .accordion-body h2,
+      body.dark .accordion-body h3,
+      body.dark .accordion-body h4,
+      body.dark .accordion-body h5,
+      body.dark .accordion-body h6 {
+        color: #ffffff !important;
+      }
 
-             
-            body.dark .badge.bg-info,
-            body.dark .badge-info {
-                background-color: #0dcaf0 !important;
-                color: #000000 !important;
-                 
-            }
+      body.dark .accordion-body p,
+      body.dark .accordion-body span,
+      body.dark .accordion-body div,
+      body.dark .accordion-body li {
+        color: #e2e8f0 !important;
+      }
 
-             
-            body.dark .badge.bg-light,
-            body.dark .badge-light {
-                background-color: #f8f9fa !important;
-                color: #000000 !important;
-            }
+      body.dark .accordion-body a {
+        color: #6ea8fe !important;
+      }
 
-             
-            body.dark .badge.bg-dark,
-            body.dark .badge-dark {
-                background-color: #495057 !important;
-                color: #ffffff !important;
-            }
+      body.dark .accordion-body a:hover {
+        color: #8bb9fe !important;
+      }
 
-             
-            body.dark .badge {
-                background-color: #495057 !important;
-                color: #ffffff !important;
-            }
+       
+       
+      body.dark .badge.bg-primary,
+      body.dark .badge-primary {
+        background-color: #340a48 !important;
+        color: #fdb927 !important;
+      }
 
-             
-            body.dark .badge a {
-                color: inherit !important;
-                text-decoration: none !important;
-            }
+       
+      body.dark .badge.bg-secondary,
+      body.dark .badge-secondary {
+        background-color: #6c757d !important;
+        color: #ffffff !important;
+      }
 
-            body.dark .badge a:hover {
-                opacity: 0.8 !important;
-            }
+       
+      body.dark .badge.bg-success,
+      body.dark .badge-success {
+        background-color: #198754 !important;
+        color: #ffffff !important;
+      }
 
+       
+      body.dark .badge.bg-danger,
+      body.dark .badge-danger {
+        background-color: #dc3545 !important;
+        color: #ffffff !important;
+      }
 
-             
-             
-             
+       
+      body.dark .badge.bg-warning,
+      body.dark .badge-warning {
+        background-color: #fd7e14 !important;
+        color: #000000 !important;
+         
+      }
 
-             
-             
+       
+      body.dark .badge.bg-info,
+      body.dark .badge-info {
+        background-color: #0dcaf0 !important;
+        color: #000000 !important;
+         
+      }
 
-             
-             
+       
+      body.dark .badge.bg-light,
+      body.dark .badge-light {
+        background-color: #f8f9fa !important;
+        color: #000000 !important;
+      }
 
-             
-             
-        </style>
+       
+      body.dark .badge.bg-dark,
+      body.dark .badge-dark {
+        background-color: #495057 !important;
+        color: #ffffff !important;
+      }
+
+       
+      body.dark .badge {
+        background-color: #495057 !important;
+        color: #ffffff !important;
+      }
+
+       
+      body.dark .badge a {
+        color: inherit !important;
+        text-decoration: none !important;
+      }
+
+      body.dark .badge a:hover {
+        opacity: 0.8 !important;
+      }
+
+       
+       
+       
+
+       
+       
+
+       
+       
+
+       
+       
+    </style>
+  </head>
+</head>
+
 <meta name="description" content=Software&#32;Engineer&#32;|&#32;Web&#32;Developer&#32;|&#32;Mobile&#32;Developer&#32;|&#32;Tech&#32;Enthusiast&#32;|&#32;Graphics&#32;Designer>
 <link rel="stylesheet" href="./css/index.css" media="all">
 <link rel="stylesheet" href="./css/projects.css" media="all">
@@ -512,6 +586,8 @@
 
 
   
+  
+  <link rel="stylesheet" href="./style.css" />
   
 
 
@@ -609,7 +685,7 @@
                     <li class="nav-item navbar-text">
                         <a class="nav-link" href="./#experience"
                             aria-label="experience">
-                            Experience
+                            Work Experience
                         </a>
                     </li>
                     
@@ -1070,7 +1146,7 @@
 <section id="experience" class="py-5">
   <div class="container">
     <h3 data-aos="fade-up" data-aos-delay="50" class="text-center">
-      Experience
+      Work Experience
     </h3>
     <div class="row justify-content-center">
       <div class="col-sm-12 col-md-10 col-lg-8 py-5">
@@ -1551,9 +1627,9 @@ With the duties and responsibilities of a software developer.</p>
             
             <div class="col-lg-4 col-md-6 my-3" data-aos="fade-up" data-aos-duration="800"
                 data-aos-delay="0">
-                <div class="card my-3 h-100" title="Civil Regsitrar Automation and Tracking System (CRATS)">
+                <div class="card my-3 h-100" title="Civil Registrar Automation and Tracking System (CRATS)">
                     <div class="card-head">
-                        <img class="card-img-top" src="./images/projects/profile.png" alt="Civil Regsitrar Automation and Tracking System (CRATS)" data-aos="zoom-in"
+                        <img class="card-img-top" src="./images/projects/profile.png" alt="Civil Registrar Automation and Tracking System (CRATS)" data-aos="zoom-in"
                             data-aos-duration="600" data-aos-delay="200">
                     </div>
                     <div class="card-body bg-transparent p-3">
@@ -1572,10 +1648,10 @@ With the duties and responsibilities of a software developer.</p>
                             
                         </div>
                         <h5 class="card-title bg-transparent mt-1" data-aos="fade-up" data-aos-duration="600"
-                            data-aos-delay="400">Civil Regsitrar Automation and Tracking System (CRATS)</h5>
+                            data-aos-delay="400">Civil Registrar Automation and Tracking System (CRATS)</h5>
                         <div class="card-text bg-transparent secondary-font" data-aos="fade-up" data-aos-duration="600"
                             data-aos-delay="500">
-                            A desktop application for the Local Civil Registrar&#39;s Office of Impasug-ong, Bukidnon.
+                            A desktop application for the Local Civil Registrar&#39;s Office of Impasug-ong, Bukidnon. Deployed and used by the office.
                         </div>
                     </div>
                     
@@ -1600,6 +1676,8 @@ With the duties and responsibilities of a software developer.</p>
                             <span class="badge badge-secondary">Javascript</span>
                             
                             <span class="badge badge-secondary">JQuery</span>
+                            
+                            <span class="badge badge-secondary">PHP</span>
                             
                         </div>
                         <h5 class="card-title bg-transparent mt-1" data-aos="fade-up" data-aos-duration="600"
@@ -1682,7 +1760,7 @@ With the duties and responsibilities of a software developer.</p>
                             data-aos-delay="700">John Go CV 1.0</h5>
                         <div class="card-text bg-transparent secondary-font" data-aos="fade-up" data-aos-duration="600"
                             data-aos-delay="800">
-                            A personal CV website made with Cuppertino and Fluttter Web.
+                            A simple personal CV website made with Cuppertino and Flutter Web.
                         </div>
                     </div>
                     
@@ -1734,7 +1812,7 @@ With the duties and responsibilities of a software developer.</p>
                         
                         
 
-                        <img src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_300,h_300,q_auto,f_auto,dpr_auto/v1753505029/2_tmw5ad.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505029/2_tmw5ad.jpg"
+                        <img src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_300,h_300,q_auto,f_auto,dpr_auto/l_My%20Brand:fav_tyildl/c_scale,fl_relative,h_0.5/o_05/fl_layer_apply,g_center/4_pfrz7r.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/l_My%20Brand:fav_tyildl/c_scale,fl_relative,h_0.5/o_05/fl_layer_apply,g_center/4_pfrz7r.jpg"
                             alt=" Gallery image" loading="lazy"
                             decoding="async" width="300" height="300" data-aos="fade-in" data-aos-duration="400"
                             data-aos-delay="600"
@@ -1765,7 +1843,7 @@ With the duties and responsibilities of a software developer.</p>
                         
                         
 
-                        <img src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_300,h_300,q_auto,f_auto,dpr_auto/v1753505030/6_bpyqem.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505030/6_bpyqem.jpg"
+                        <img src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_300,h_300,q_auto,f_auto,dpr_auto/l_My%20Brand:fav_tyildl/c_scale,fl_relative,h_0.5/o_05/fl_layer_apply,g_center/6_pg3ypi.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/l_My%20Brand:fav_tyildl/c_scale,fl_relative,h_0.5/o_05/fl_layer_apply,g_center/6_pg3ypi.jpg"
                             alt=" Gallery image" loading="lazy"
                             decoding="async" width="300" height="300" data-aos="fade-in" data-aos-duration="400"
                             data-aos-delay="750"
@@ -1796,7 +1874,7 @@ With the duties and responsibilities of a software developer.</p>
                         
                         
 
-                        <img src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_300,h_300,q_auto,f_auto,dpr_auto/v1753505032/5_iwf2az.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505032/5_iwf2az.jpg"
+                        <img src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_300,h_300,q_auto,f_auto,dpr_auto/l_My%20Brand:fav_tyildl/c_scale,fl_relative,h_0.5/o_05/fl_layer_apply,g_center/9_mhsltd.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/l_My%20Brand:fav_tyildl/c_scale,fl_relative,h_0.5/o_05/fl_layer_apply,g_center/9_mhsltd.png"
                             alt=" Gallery image" loading="lazy"
                             decoding="async" width="300" height="300" data-aos="fade-in" data-aos-duration="400"
                             data-aos-delay="900"
@@ -1827,7 +1905,7 @@ With the duties and responsibilities of a software developer.</p>
                         
                         
 
-                        <img src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_300,h_300,q_auto,f_auto,dpr_auto/v1753505041/13_cwsvqz.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505041/13_cwsvqz.png"
+                        <img src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_300,h_300,q_auto,f_auto,dpr_auto/l_My%20Brand:fav_tyildl/c_scale,fl_relative,h_0.5/o_05/fl_layer_apply,g_center/NCA_-_NV350_Shirt_BLACK_copy_hxpifl.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/l_My%20Brand:fav_tyildl/c_scale,fl_relative,h_0.5/o_05/fl_layer_apply,g_center/NCA_-_NV350_Shirt_BLACK_copy_hxpifl.jpg"
                             alt=" Gallery image" loading="lazy"
                             decoding="async" width="300" height="300" data-aos="fade-in" data-aos-duration="400"
                             data-aos-delay="1050"
@@ -1858,7 +1936,7 @@ With the duties and responsibilities of a software developer.</p>
                         
                         
 
-                        <img src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_300,h_300,q_auto,f_auto,dpr_auto/v1753505028/1_w5vtqd.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505028/1_w5vtqd.jpg"
+                        <img src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_300,h_300,q_auto,f_auto,dpr_auto/l_My%20Brand:fav_tyildl/c_scale,fl_relative,h_0.5/o_05/fl_layer_apply,g_center/13_cwsvqz.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/l_My%20Brand:fav_tyildl/c_scale,fl_relative,h_0.5/o_05/fl_layer_apply,g_center/13_cwsvqz.png"
                             alt=" Gallery image" loading="lazy"
                             decoding="async" width="300" height="300" data-aos="fade-in" data-aos-duration="400"
                             data-aos-delay="1200"
@@ -1889,7 +1967,7 @@ With the duties and responsibilities of a software developer.</p>
                         
                         
 
-                        <img src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_300,h_300,q_auto,f_auto,dpr_auto/v1753505098/6_fyo002.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505098/6_fyo002.png"
+                        <img src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_300,h_300,q_auto,f_auto,dpr_auto/l_My%20Brand:fav_tyildl/c_scale,fl_relative,h_0.5/o_05/fl_layer_apply,g_center/33_vsbsat.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/l_My%20Brand:fav_tyildl/c_scale,fl_relative,h_0.5/o_05/fl_layer_apply,g_center/33_vsbsat.png"
                             alt=" Gallery image" loading="lazy"
                             decoding="async" width="300" height="300" data-aos="fade-in" data-aos-duration="400"
                             data-aos-delay="1350"
@@ -1920,7 +1998,7 @@ With the duties and responsibilities of a software developer.</p>
                         
                         
 
-                        <img src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_300,h_300,q_auto,f_auto,dpr_auto/v1753505033/7_anxtvt.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505033/7_anxtvt.jpg"
+                        <img src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_300,h_300,q_auto,f_auto,dpr_auto/l_My%20Brand:fav_tyildl/c_scale,fl_relative,h_0.5/o_05/fl_layer_apply,g_center/26_g9v3rz.png" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/l_My%20Brand:fav_tyildl/c_scale,fl_relative,h_0.5/o_05/fl_layer_apply,g_center/26_g9v3rz.png"
                             alt=" Gallery image" loading="lazy"
                             decoding="async" width="300" height="300" data-aos="fade-in" data-aos-duration="400"
                             data-aos-delay="1500"
@@ -1951,7 +2029,7 @@ With the duties and responsibilities of a software developer.</p>
                         
                         
 
-                        <img src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_300,h_300,q_auto,f_auto,dpr_auto/v1753505041/12_x1h913.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/v1753505041/12_x1h913.jpg"
+                        <img src="https://res.cloudinary.com/dimo050t7/image/upload/c_fill,w_300,h_300,q_auto,f_auto,dpr_auto/l_My%20Brand:fav_tyildl/c_scale,fl_relative,h_0.5/o_05/fl_layer_apply,g_center/15_nyj13l.jpg" data-viewer-src="https://res.cloudinary.com/dimo050t7/image/upload/q_auto,f_auto,w_1200,dpr_auto/l_My%20Brand:fav_tyildl/c_scale,fl_relative,h_0.5/o_05/fl_layer_apply,g_center/15_nyj13l.jpg"
                             alt=" Gallery image" loading="lazy"
                             decoding="async" width="300" height="300" data-aos="fade-in" data-aos-duration="400"
                             data-aos-delay="1650"
@@ -2283,14 +2361,10 @@ With the duties and responsibilities of a software developer.</p>
     </div>
 </div></footer><script src="./bootstrap-5/js/bootstrap.bundle.min.js"></script>
 <script>
-    if (localStorage.getItem("pref-theme") === "dark") {
+    if (document.body.className.includes("light")) {
         document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
+        localStorage.setItem("pref-theme", 'dark');
     }
-
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
@@ -2338,6 +2412,66 @@ With the duties and responsibilities of a software developer.</p>
     once: false,
     offset: 100
   });
+</script>
+<script>
+(function() {
+'use strict';
+
+let lastScrollTop = 0;
+let header = null;
+let navbar = null;
+let ticking = false;
+
+function init() {
+    header = document.querySelector('header');
+    navbar = document.querySelector('.navbar');
+    
+    if (!header && !navbar) return;
+    
+    // Override existing scroll behavior
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    console.log('Enhanced navbar transitions loaded');
+}
+
+function handleScroll() {
+    if (!ticking) {
+        requestAnimationFrame(updateNavbar);
+        ticking = true;
+    }
+}
+
+function updateNavbar() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollThreshold = 100;
+    const target = header || navbar;
+    
+    if (!target) {
+        ticking = false;
+        return;
+    }
+    
+    if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
+        // Scrolling down - hide
+        target.classList.add('nav-up');
+        target.classList.remove('nav-down', 'show');
+    } else if (scrollTop < lastScrollTop || scrollTop <= scrollThreshold) {
+        // Scrolling up or at top - show
+        target.classList.remove('nav-up');
+        target.classList.add('nav-down', 'show');
+    }
+    
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    ticking = false;
+}
+
+// Initialize when ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+} else {
+    init();
+}
+})();
 </script>
 
 

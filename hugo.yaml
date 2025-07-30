@@ -33,17 +33,17 @@ markup:
       unsafe: true
 
 Menus:
- main:
- # - identifier: blog
- #   name: Blog
- #   title: Blog posts
- #   url: /blogs
- #   weight: 1
-  - identifier: gallery
-    name: Graphics Design
-    title: Graphics Design Projects
-    url: /gallery
-    weight: 2
+  main:
+    # - identifier: blog
+    #   name: Blog
+    #   title: Blog posts
+    #   url: /blogs
+    #   weight: 1
+    - identifier: gallery
+      name: Graphics Design
+      title: Graphics Design Projects
+      url: /gallery
+      weight: 2
 #Dropdown menu
 # - identifier: dropdown
 #   title: Example dropdown menu
@@ -68,6 +68,10 @@ params:
   # staticPath: ""  # The path to serve the static files from
   favicon: "/fav.png"
 
+  #custom settings by VAN_GO
+  customCSS: ["css/custom.css"]
+  customJS: ["js/custom.js"]
+
   # Whether to serve bootstrap css and js files from CDN or not. Can be set to true, "css" or "js" to choose between
   # serving both, only the css, or only the js files through the CDN. Any other value will make so that CDN is not used.
   # Note the lack of "" in true, it should be of boolean type.
@@ -87,7 +91,7 @@ params:
 
   theme:
     disableThemeToggle: false
-    # defaultTheme: "light" # dark
+    defaultTheme: "dark" # dark
 
   font:
     fontSize: 1rem # default: 1rem
@@ -126,6 +130,7 @@ params:
     stickyNavBar:
       enable: true
       showOnScrollUp: true
+
     enableSeparator: true
     menus:
       disableAbout: false
@@ -190,7 +195,7 @@ params:
   # Experience
   experience:
     enable: true
-    # title: "Custom Name"
+    title: "Work Experience"
     items:
       - job: "Junior Software Developer"
         company: "Mindanao Consolidated Cooperative Bank"
@@ -475,12 +480,12 @@ params:
     #   messageRows: 5
 
     footer:
-       recentPosts:
-         path: "blogs"
-         count: 3
-         title: Recent Posts
-         enable: true
-         disableFeaturedImage: false
+      recentPosts:
+        path: "blogs"
+        count: 3
+        title: Recent Posts
+        enable: true
+        disableFeaturedImage: false
     socialNetworks:
       github: https://github.com
       linkedin: https://linkedin.com
@@ -525,4 +530,63 @@ params:
         offset: 100
       });
     </script>
- 
+    <script>
+    (function() {
+    'use strict';
+
+    let lastScrollTop = 0;
+    let header = null;
+    let navbar = null;
+    let ticking = false;
+
+    function init() {
+        header = document.querySelector('header');
+        navbar = document.querySelector('.navbar');
+        
+        if (!header && !navbar) return;
+        
+        // Override existing scroll behavior
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        
+        console.log('Enhanced navbar transitions loaded');
+    }
+
+    function handleScroll() {
+        if (!ticking) {
+            requestAnimationFrame(updateNavbar);
+            ticking = true;
+        }
+    }
+
+    function updateNavbar() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollThreshold = 100;
+        const target = header || navbar;
+        
+        if (!target) {
+            ticking = false;
+            return;
+        }
+        
+        if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
+            // Scrolling down - hide
+            target.classList.add('nav-up');
+            target.classList.remove('nav-down', 'show');
+        } else if (scrollTop < lastScrollTop || scrollTop <= scrollThreshold) {
+            // Scrolling up or at top - show
+            target.classList.remove('nav-up');
+            target.classList.add('nav-down', 'show');
+        }
+        
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        ticking = false;
+    }
+
+    // Initialize when ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+    })();
+    </script>
