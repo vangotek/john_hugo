@@ -85,7 +85,7 @@ params:
   animate: true
 
   theme:
-    disableThemeToggle: true
+    disableThemeToggle: false
     # defaultTheme: "light" # dark
 
   font:
@@ -391,8 +391,8 @@ params:
     enable: true
     # title: "Custom Name"
     items:
-      - title: Civil Regsitrar Automation and Tracking System (CRATS)
-        content: A desktop application for the Local Civil Registrar's Office of Impasug-ong, Bukidnon.
+      - title: Civil Registrar Automation and Tracking System (CRATS)
+        content: A desktop application for the Local Civil Registrar's Office of Impasug-ong, Bukidnon. Deployed and used by the office.
         image: /images/projects/profile.png
         # featured:
         #   name: Demo
@@ -422,6 +422,7 @@ params:
           - "CSS"
           - "Javascript"
           - "JQuery"
+          - "PHP"
       #  links:
       #    - icon: fab fa-github
       #      url: https://github.com/gurusabarish/converter
@@ -432,7 +433,7 @@ params:
         #  name: Demo V2
         #   link: https://hugo-profile-2.netlify.app
         badges:
-          - "PhP"
+          - "PHP"
           - "HTML"
           - "Javascript"
           - "CSS"
@@ -442,7 +443,7 @@ params:
         #   - icon: fab fa-github
         #     url: https://github.com/gurusabarish/HugoProfileV2
       - title: John Go CV 1.0
-        content: A personal CV website made with Cuppertino and Fluttter Web.
+        content: A simple personal CV website made with Cuppertino and Flutter Web.
         image: /images/projects/cv.jpg
         featured:
           name: Live Demo
