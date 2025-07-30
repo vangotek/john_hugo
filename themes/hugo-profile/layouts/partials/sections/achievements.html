@@ -1,63 +1,60 @@
 {{ if .Site.Params.achievements.enable | default false }}
 <section id="achievements" class="py-5">
   <div class="container">
-    <h3 class="text-center">
+    <h3 class="text-center" data-aos="fade-up" data-aos-duration="800">
       {{ .Site.Params.achievements.title | default "Achievements" }}
     </h3>
     <div class="px-0 px-md-5 px-lg-5">
       <div class="row justify-content-center px-3 px-md-5 px-lg-5">
-        {{ range .Site.Params.achievements.items }} {{ if .url }}
-        <div class="col-lg-4 col-md-6 my-3">
-          <a
-            class="card my-3 h-100 p-3"
-            href="{{ .url }}"
-            title="{{ .title }}"
-            target="_blank"
-          >
+        {{ range $index, $achievement := .Site.Params.achievements.items }}
+        {{ if .url }}
+        <div class="col-lg-4 col-md-6 my-3" data-aos="flip-up" data-aos-duration="700"
+          data-aos-delay="{{ mul $index 120 }}">
+          <a class="card my-3 h-100 p-3" href="{{ .url }}" title="{{ .title }}" target="_blank" data-aos="fade-in"
+            data-aos-duration="500" data-aos-delay="{{ add (mul $index 120) 200 }}">
             {{if .image }}
             <div class="card-head">
-              <img
-                class="card-img-top"
-                src="{{ .image }}"
-                style="
+              <img class="card-img-top" src="{{ .image }}" style="
                   width: 50%;
                   max-width: auto;
                   height: auto;
                   align-self: center;
-                "
-              />
+                " data-aos="zoom-in" data-aos-duration="600" data-aos-delay="{{ add (mul $index 120) 400 }}" />
             </div>
             {{ end }}
             <div class="card-body bg-transparent">
-              <h5 class="card-title bg-transparent">{{ .title }}</h5>
-              <div class="card-text secondary-font">{{ .content }}</div>
+              <h5 class="card-title bg-transparent" data-aos="fade-right" data-aos-duration="600"
+                data-aos-delay="{{ add (mul $index 120) 500 }}">{{ .title }}</h5>
+              <div class="card-text secondary-font" data-aos="fade-up" data-aos-duration="600"
+                data-aos-delay="{{ add (mul $index 120) 600 }}">{{ .content }}</div>
             </div>
           </a>
         </div>
         {{ else }}
-        <div class="col-lg-4 col-md-6 my-3">
-          <div class="card my-3 h-100 p-3" title="{{ .title }}">
+        <div class="col-lg-4 col-md-6 my-3" data-aos="flip-up" data-aos-duration="700"
+          data-aos-delay="{{ mul $index 120 }}">
+          <div class="card my-3 h-100 p-3" title="{{ .title }}" data-aos="fade-in" data-aos-duration="500"
+            data-aos-delay="{{ add (mul $index 120) 200 }}">
             {{if .image }}
             <div class="card-head">
-              <img
-                class="card-img-top"
-                src="{{ .image }}"
-                style="
+              <img class="card-img-top" src="{{ .image }}" style="
                   width: 50%;
                   max-width: auto;
                   height: auto;
                   align-self: center;
-                "
-              />
+                " data-aos="zoom-in" data-aos-duration="600" data-aos-delay="{{ add (mul $index 120) 400 }}" />
             </div>
             {{ end }}
             <div class="card-body bg-transparent">
-              <h5 class="card-title bg-transparent">{{ .title }}</h5>
-              <div class="card-text secondary-font">{{ .content }}</div>
+              <h5 class="card-title bg-transparent" data-aos="fade-right" data-aos-duration="600"
+                data-aos-delay="{{ add (mul $index 120) 500 }}">{{ .title }}</h5>
+              <div class="card-text secondary-font" data-aos="fade-up" data-aos-duration="600"
+                data-aos-delay="{{ add (mul $index 120) 600 }}">{{ .content }}</div>
             </div>
           </div>
         </div>
-        {{ end }} {{ end }}
+        {{ end }}
+        {{ end }}
       </div>
     </div>
   </div>

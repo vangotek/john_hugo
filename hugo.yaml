@@ -32,18 +32,18 @@ markup:
     renderer:
       unsafe: true
 
-#Menus:
-# main:
-#- identifier: blog
-# name: Blog
-# title: Blog posts
-# url: /blogs
-# weight: 1
-#- identifier: gallery
-# name: Gallery
-# title: Blog posts
-# url: /gallery
-# weight: 2
+Menus:
+ main:
+ # - identifier: blog
+ #   name: Blog
+ #   title: Blog posts
+ #   url: /blogs
+ #   weight: 1
+  - identifier: gallery
+    name: Graphics Design
+    title: Graphics Design Projects
+    url: /gallery
+    weight: 2
 #Dropdown menu
 # - identifier: dropdown
 #   title: Example dropdown menu
@@ -76,7 +76,8 @@ params:
   # If you want to load dynamically responsive images from Cloudinary
   # This requires your images to be uploaded + hosted on Cloudinary
   # Uncomment and change YOUR_CLOUD_NAME to the Cloud Name in your Cloudinary console
-  # cloudinary_cloud_name: "YOUR_CLOUD_NAME"
+  #environment: "development"
+  cloudinary_cloud_name: "dimo050t"
 
   # Whether to add mathjax support on all pages. Alternatively, you can opt-in per page by adding `mathjax: true` in the frontmatter.
   mathjax: false
@@ -120,7 +121,7 @@ params:
     # brandLogo: "/logo.png" # Logo for the brand | default is the favicon variable
     # showBrandLogo: false # Show brand logo in nav bar | default is true
     brandName: "<Van_Go/>" # Brand name for the brand | default is the title variable
-    disableSearch: false
+    disableSearch: true
     # searchPlaceholder: "Search"
     stickyNavBar:
       enable: true
@@ -178,7 +179,7 @@ params:
         - "Mantine"
         - "JavaScript"
         - "Express"
-        - "PhP"
+        - "PHP"
         - "Prisma"
         - "MariaDB"
         - "Typescript"
@@ -455,6 +456,10 @@ params:
       #   links:
       #    - icon: fa fa-envelope
 
+  graphics:
+    enable: true
+    url: /gallery
+    title: "Graphics Design"
   #Contact
   contact:
     enable: true
@@ -469,13 +474,13 @@ params:
     #   messageCaption: "Enter your message here"
     #   messageRows: 5
 
-    # footer:
-    #   recentPosts:
-    #     path: "blogs"
-    #     count: 3
-    #    title: Recent Posts
-    #    enable: true
-    #    disableFeaturedImage: false
+    footer:
+       recentPosts:
+         path: "blogs"
+         count: 3
+         title: Recent Posts
+         enable: true
+         disableFeaturedImage: false
     socialNetworks:
       github: https://github.com
       linkedin: https://linkedin.com
@@ -511,5 +516,13 @@ params:
     articleList: "Jan 2, 2006"
     articleRecent: "Jan 2, 2006"
 
-  #customScripts: -| # You can add custom scripts which will be added before </body> tag
-  #  <script type="text/javascript"><!-- any script here --></script>
+  customScripts: |
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 800,
+        once: false,
+        offset: 100
+      });
+    </script>
+ 

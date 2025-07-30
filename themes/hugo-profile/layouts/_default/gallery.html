@@ -1,11 +1,170 @@
 {{ define "head" }}
 <meta name="description" content="{{ .Title }} of {{ .Site.Title }}">
-<!-- <link rel="stylesheet" href="{{ .Site.Params.staticPath }}/css/list.css" media="all"> -->
 {{ if .Params.viewer | default true }}
 <link rel="stylesheet" href="{{ .Site.Params.staticPath }}/css/gallery.css">
 <link rel="stylesheet" href="{{ .Site.Params.staticPath }}/viewer/viewer.min.css">
 <script src="{{ .Site.Params.staticPath }}/viewer/viewer.min.js"></script>
 {{ end }}
+
+<style>
+    /* Fix image display and make layout adaptive */
+    .card-group .row {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+        justify-content: center;
+    }
+
+    .card-group .col-md-4 {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .card {
+        height: 280px;
+        overflow: hidden;
+        border-radius: 8px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        background: #f8f9fa;
+        position: relative;
+    }
+
+    .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        cursor: pointer;
+        opacity: 0;
+    }
+
+    .card img.loaded {
+        opacity: 1;
+    }
+
+    .card:hover img {
+        transform: scale(1.05);
+    }
+
+    /* Loading placeholder */
+    .card::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 40px;
+        height: 40px;
+        margin: -20px 0 0 -20px;
+        border: 3px solid #f3f3f3;
+        border-top: 3px solid #007bff;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        z-index: 1;
+    }
+
+    .card img.loaded+.card::before,
+    .card:has(img.loaded)::before {
+        display: none;
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1200px) {
+        .card-group .row {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .card-group .row {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.8rem;
+        }
+
+        .card {
+            height: 240px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .card-group .row {
+            grid-template-columns: 1fr;
+            gap: 0.6rem;
+        }
+
+        .card {
+            height: 220px;
+        }
+    }
+
+    .category-filters {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .filter-btn {
+        padding: 8px 16px;
+        border: 1px solid #ddd;
+        background: white;
+        cursor: pointer;
+        border-radius: 20px;
+        transition: all 0.3s ease;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .filter-btn:hover {
+        background: #f8f9fa;
+        border-color: #007bff;
+        transform: translateY(-1px);
+    }
+
+    .filter-btn.active {
+        background: #007bff;
+        color: white;
+        border-color: #007bff;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+    }
+
+    .gallery-item {
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .gallery-item.hidden {
+        display: none;
+    }
+
+    /* Smooth filtering animation */
+    .gallery-item.filtering {
+        opacity: 0.5;
+        transform: scale(0.95);
+    }
+
+    /* Error state */
+    .card img[src*="data:image/svg+xml"] {
+        opacity: 0.7;
+    }
+</style>
 
 {{ end }}
 
@@ -20,12 +179,55 @@
     <div class="row p-4">
         {{ .Content | emojify }}
     </div>
+
+    <!-- Category Filter Buttons -->
+    {{ if .Params.galleryImages }}
+    <div class="category-filters">
+        <button class="filter-btn active" data-category="all">All</button>
+        {{ $categories := slice }}
+        {{ range .Params.galleryImages }}
+        {{ if .category }}
+        {{ $categories = $categories | append .category }}
+        {{ end }}
+        {{ end }}
+        {{ range ($categories | uniq | sort) }}
+        <button class="filter-btn" data-category="{{ . }}">{{ . }}</button>
+        {{ end }}
+    </div>
+    {{ end }}
+
     <div class="card-group p-4">
         <div class="row justify-content-center">
             {{ range .Params.galleryImages }}
-            <div class="col-md-4 p-0 m-0">
+            {{ $category := .category | default "Other" }}
+            {{ $imageSrc := .src }}
+            {{ $altText := .title | default .caption | default "Gallery image" }}
+
+            <!-- Process Cloudinary URLs -->
+            {{ $thumbnailUrl := $imageSrc }}
+            {{ $fullUrl := $imageSrc }}
+            {{ if hasPrefix $imageSrc "https://res.cloudinary.com/" }}
+            {{ $parts := split $imageSrc "/upload/" }}
+            {{ if eq (len $parts) 2 }}
+            {{ $beforeUpload := index $parts 0 }}
+            {{ $afterUpload := index $parts 1 }}
+            {{ $thumbnailUrl = printf "%s/upload/c_fill,w_400,h_280,q_auto,f_auto,dpr_auto/%s" $beforeUpload
+            $afterUpload }}
+            {{ $fullUrl = printf "%s/upload/q_auto,f_auto,w_1200,dpr_auto/%s" $beforeUpload $afterUpload }}
+            {{ end }}
+            {{ else if not (hasPrefix $imageSrc "http") }}
+            {{ $thumbnailUrl = printf "/images/%s" $imageSrc }}
+            {{ $fullUrl = printf "/images/%s" $imageSrc }}
+            {{ end }}
+
+            <div class="col-md-4 p-0 m-0 gallery-item" data-category="{{ $category }}">
                 <div class="card p-0 m-0 border-0">
-                    <img class="w-100 {{if .Params.viewer | default true}}viewer-enabled-image{{end}}" height="280px" src="{{ .src }}">
+                    {{ if $.Params.viewer | default true }}
+                    <img class="w-100 viewer-enabled-image" src="{{ $thumbnailUrl }}" data-viewer-src="{{ $fullUrl }}"
+                        alt="{{ $altText }}" loading="lazy" decoding="async">
+                    {{ else }}
+                    <img class="w-100" src="{{ $thumbnailUrl }}" alt="{{ $altText }}" loading="lazy" decoding="async">
+                    {{ end }}
                 </div>
             </div>
             {{ end }}
@@ -35,9 +237,120 @@
 
 {{ if .Params.viewer | default true }}
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var viewer = new Viewer(document.getElementById('list-page'), {
-            ...{{ .Params.viewerOptions }}
+    document.addEventListener('DOMContentLoaded', function () {
+        let viewer = null;
+
+        // Progressive image loading and error handling
+        const images = document.querySelectorAll('.card img');
+        let loadedImages = 0;
+
+        images.forEach(img => {
+            // Handle successful loading
+            img.addEventListener('load', function () {
+                this.classList.add('loaded');
+                loadedImages++;
+
+                // Initialize viewer after first few images load or all images load
+                if ((loadedImages >= Math.min(4, images.length) || loadedImages === images.length) && !viewer) {
+                    initializeViewer();
+                }
+            });
+
+            // Handle loading errors
+            img.addEventListener('error', function () {
+                this.style.background = '#f8f9fa';
+                this.style.display = 'flex';
+                this.style.alignItems = 'center';
+                this.style.justifyContent = 'center';
+                this.alt = 'Image not found';
+                this.src = 'data:image/svg+xml;charset=UTF-8,%3Csvg width="400" height="280" xmlns="http://www.w3.org/2000/svg"%3E%3Crect width="100%25" height="100%25" fill="%23f8f9fa"/%3E%3Ctext x="50%25" y="50%25" font-family="Arial, sans-serif" font-size="14" fill="%236c757d" text-anchor="middle" dy=".3em"%3EImage not found%3C/text%3E%3C/svg%3E';
+                this.classList.add('loaded'); // Still count as loaded
+                loadedImages++;
+            });
+
+            // If image is already loaded
+            if (img.complete) {
+                if (img.naturalHeight !== 0) {
+                    img.classList.add('loaded');
+                    loadedImages++;
+                } else {
+                    // Trigger error handler for broken images
+                    img.dispatchEvent(new Event('error'));
+                }
+            }
+        });
+
+        // Initialize viewer after 2 seconds as fallback
+        setTimeout(() => {
+            if (!viewer) {
+                initializeViewer();
+            }
+        }, 2000);
+
+        function initializeViewer() {
+            viewer = new Viewer(document.getElementById('list-page'), {
+                url: 'data-viewer-src',
+                title: function (image) {
+                    return image.alt || 'Gallery Image';
+                },
+                toolbar: {
+                    zoomIn: 1,
+                    zoomOut: 1,
+                    oneToOne: 1,
+                    reset: 1,
+                    prev: 1,
+                    play: {
+                        show: 1,
+                        size: 'large',
+                    },
+                    next: 1,
+                    rotateLeft: 1,
+                    rotateRight: 1,
+                    flipHorizontal: 1,
+                    flipVertical: 1,
+                }
+            });
+        }
+
+        // Category filtering functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function () {
+                const category = this.getAttribute('data-category');
+
+                // Update active button
+                filterBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                // Add filtering animation
+                galleryItems.forEach(item => {
+                    item.classList.add('filtering');
+                });
+
+                // Filter gallery items with delay for smooth animation
+                setTimeout(() => {
+                    galleryItems.forEach(item => {
+                        const itemCategory = item.getAttribute('data-category');
+                        item.classList.remove('filtering');
+
+                        if (category === 'all' || itemCategory === category) {
+                            item.classList.remove('hidden');
+                        } else {
+                            item.classList.add('hidden');
+                        }
+                    });
+
+                    // Reinitialize viewer after filtering
+                    if (viewer) {
+                        viewer.destroy();
+                        setTimeout(() => {
+                            initializeViewer();
+                        }, 100);
+                    }
+                }, 150);
+            });
         });
     });
 </script>
