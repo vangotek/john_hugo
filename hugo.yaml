@@ -91,7 +91,7 @@ params:
 
   theme:
     disableThemeToggle: false
-    defaultTheme: "dark" # dark
+    defaultTheme: "light" # dark
 
   font:
     fontSize: 1rem # default: 1rem
@@ -590,3 +590,5 @@ params:
     }
     })();
     </script>
+   
+

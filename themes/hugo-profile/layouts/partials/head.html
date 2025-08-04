@@ -3,6 +3,12 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 <meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width" />
 <link rel="icon" href={{ .Site.Params.favicon | default "/fav.png" }} type="image/gif">
+<!--For PWA feature-->
+<link rel="manifest" href="{{ "manifest.json" | relURL }}">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+
+    
 
 
 <!-- Fonts -->
