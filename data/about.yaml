@@ -1,3 +1,22 @@
-content: |
-  I am a seasoned Software Engineer with 5+ years of 
-  experience in web, mobile, and desktop development...
+enable: true
+title: "About Me"
+image: "/images/me.png"
+content: |-
+  I am a software developer with a passion for web, desktop, mobile development. I have a background in information technology, and I have a strong interest in the intersection of technology and graphics design. I am currently working as a software developer at [mccb.com.ph.](https://mccb.com.ph) in Cagayan de Oro City, Philippines.
+
+  I am currently working on a project that will be integrated to the company's in house legacy system and to be used to help our company in creating loan disbursement details, including automated workflows and user-friendly interfaces.
+skills:
+  enable: true
+  title: "Here are a few technologies I've been working with recently:"
+  items:
+    - "React"
+    - "Mantine"
+    - "JavaScript"
+    - "Express"
+    - "PHP"
+    - "Prisma"
+    - "MariaDB"
+    - "Typescript"
+    - "GitHub"
+    - "Git"
+    - "Docker"

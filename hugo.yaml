@@ -168,29 +168,29 @@ params:
       #   url: "https://example.com"
 
   # About
-  about:
-    enable: true
-    title: "About Me"
-    image: "/images/me.png"
-    content: |-
-      I am a software developer with a passion for web, desktop, mobile development. I have a background in information technology, and I have a strong interest in the intersection of technology and graphics design. I am currently working as a software developer at [mccb.com.ph.](https://mccb.com.ph) in Cagayan de Oro City, Philippines.
-
-      I am currently working on a project that will be integrated to the company's in house legacy system and to be used to help our company in creating loan disbursement details, including automated workflows and user-friendly interfaces.
-    skills:
-      enable: true
-      title: "Here are a few technologies I've been working with recently:"
-      items:
-        - "React"
-        - "Mantine"
-        - "JavaScript"
-        - "Express"
-        - "PHP"
-        - "Prisma"
-        - "MariaDB"
-        - "Typescript"
-        - "GitHub"
-        - "Git"
-        - "Docker"
+  #about:
+  #enable: true
+  #title: "About Me"
+  #image: "/images/me.png"
+  #content: |-
+  #  I am a software developer with a passion for web, desktop, mobile development. I have a background in information technology, and I have a strong interest in the intersection of technology and graphics design. I am currently working as a software developer at [mccb.com.ph.](https://mccb.com.ph) in Cagayan de Oro City, Philippines.
+  #
+  #  I am currently working on a project that will be integrated to the company's in house legacy system and to be used to help our company in creating loan disbursement details, including automated workflows and user-friendly interfaces.
+  #skills:
+  #    enable: true
+  #     title: "Here are a few technologies I've been working with recently:"
+  #   items:
+  #    - "React"
+  #   - "Mantine"
+  #  - "JavaScript"
+  # - "Express"
+  #- "PHP"
+  #   - "Prisma"
+  #   - "MariaDB"
+  #   - "Typescript"
+  #   - "GitHub"
+  #   - "Git"
+  #   - "Docker"
 
   # Experience
   experience:
@@ -465,6 +465,24 @@ params:
     enable: true
     url: /gallery
     title: "Graphics Design"
+
+  # Trainings
+  trainings:
+    enable: true
+    # title: "Custom Name"
+    index: false
+    items:
+      - title: "Phyton"
+        school:
+          name: "University of Cebu - Main Campus, Cebu City"
+          url: "https://universityofcebu.net"
+        date: "2007 - 2011"
+        # GPA: "3.8 out of 5.0"
+        content: |
+          - Class of October 2011
+          - Capstone Project role : Project Manager
+          - Capstone Project title : Guided Instructional Planner (GIP) System for faculty teachers
+
   #Contact
   contact:
     enable: true
@@ -590,5 +608,3 @@ params:
     }
     })();
     </script>
-   
-
