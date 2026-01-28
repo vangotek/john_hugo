@@ -1,0 +1,313 @@
+Request
+
+{
+  `path`: `C:\\Users\\GoVC\\Documents\\github_pages\\pres_app\\src\\components\\PrescriptionForm\\PrescriptionForm.tsx`,
+  `edits`: [
+    {
+      `newText`: `import React, { useState, useEffect } from \"react\";
+import {
+  TextInput,
+  Textarea,
+  Button,
+  Paper,
+  Group,
+  Stack,
+  Select,
+  NumberInput,
+  Box,
+  ActionIcon,
+  Divider,
+  Modal,
+} from \"@mantine/core\";
+import {
+  IconMedicalCross,
+  IconMedicineSyrup,
+  IconPills,
+  IconPlus,
+  IconPrescription,
+  IconReportMedical,
+  IconTableHeart,
+  IconTrash,
+  IconPrinter,
+} from \"@tabler/icons-react\";
+import PrescriptionPrint from \"./PrescriptionPrint\";
+import { useData } from \"../../context/DataContext\";
+import { notifications } from \"@mantine/notifications\";`,
+      `oldText`: `import React, { useState, useEffect } from \"react\";
+import {
+  TextInput,
+  Textarea,
+  Button,
+  Paper,
+  Group,
+  Stack,
+  Select,
+  NumberInput,
+  Box,
+  ActionIcon,
+  Divider,
+  Modal,
+} from \"@mantine/core\";
+import {
+  IconMedicalCross,
+  IconMedicineSyrup,
+  IconPills,
+  IconPlus,
+  IconPrescription,
+  IconReportMedical,
+  IconTableHeart,
+  IconTrash,
+  IconPrinter,
+} from \"@tabler/icons-react\";
+import PrescriptionPrint from \"./PrescriptionPrint\";
+import { Medication as MedicationData } from \"../../pages/MedicationManagement/MedicationManagementPage\";`
+    },
+    {
+      `newText`: `export default function PrescriptionForm(): React.ReactElement {
+  const [isPrintModalOpen, setIsPrintModalOpen] = useState(false);
+  const { medications, patients, addPrescription } = useData();`,
+      `oldText`: `export default function PrescriptionForm(): React.ReactElement {
+  const [isPrintModalOpen, setIsPrintModalOpen] = useState(false);
+  const [medicationOptions, setMedicationOptions] = useState<MedicationData[]>([]);`
+    },
+    {
+      `newText`: `  useEffect(() => {
+    // Data is now available from context
+  }, []);`,
+      `oldText`: `  useEffect(() => {
+    const storedMedications = localStorage.getItem(\"medications\");
+    if (storedMedications) {
+      try {
+        const parsed = JSON.parse(storedMedications);
+        if (Array.isArray(parsed)) {
+          setMedicationOptions(parsed);
+        }
+      } catch (e) {
+        console.error(\"Error parsing medications from local storage:\", e);
+      }
+    }
+  }, []);`
+    },
+    {
+      `newText`: `  const handleSubmit = (): void => {
+    if (!form.patientName || !form.doctorName || form.medications.some(med => !med.medication)) {
+      notifications.show({
+        title: \"Error\",
+        message: \"Please fill in all required fields\",
+        color: \"red\",
+      });
+      return;
+    }
+
+    try {
+      const prescriptionData = {
+        patientId: Date.now().toString(), // In a real app, this would be selected from patients
+        patientName: form.patientName,
+        doctorName: form.doctorName,
+        date: new Date(form.date),
+        medications: form.medications.map(med => ({
+          medicationId: medications.find(m => m.name === med.medication)?.id || '',
+          medicationName: med.medication,
+          dosage: med.dosage,
+          frequency: med.frequency,
+          duration: med.duration,
+          instructions: med.instructions,
+        })),
+        status: 'active' as const
+      };
+
+      addPrescription(prescriptionData);
+      notifications.show({
+        title: \"Success\",
+        message: \"Prescription saved successfully!\",
+        color: \"green\",
+      });
+
+      // Reset form
+      setForm({
+        patientName: \"\",
+        patientAge: \"\",
+        medications: [{
+          id: \"1\",
+          medication: \"\",
+          dosage: \"\",
+          frequency: \"\",
+          duration: \"\",
+          instructions: \"\",
+        }],
+        doctorName: \"\",
+        date: new Date().toISOString().split(\"T\")[0],
+        gender: \"\",
+        weight: \"\",
+      });
+    } catch (error) {
+      notifications.show({
+        title: \"Error\",
+        message: \"Failed to save prescription\",
+        color: \"red\",
+      });
+    }
+  };`,
+      `oldText`: `  const handleSubmit = (): void => {
+    console.log(\"Prescription:\", form);
+    alert(\"Prescription saved successfully!\");
+  };`
+    },
+    {
+      `newText`: `                    <Select
+                      label=\"Medication\"
+                      value={med.medication}
+                      onChange={(val) =>
+                        updateMedication(med.id, \"medication\", val || \"\")
+                      }
+                      data={medications.map((m) => ({ value: m.name, label: `${m.name} - ${m.dosage}` }))}
+                      placeholder=\"e.g., Amoxicillin 500mg\"
+                      required
+                      searchable
+                    />`,
+      `oldText`: `                    <Select
+                      label=\"Medication\"
+                      value={med.medication}
+                      onChange={(val) =>
+                        updateMedication(med.id, \"medication\", val || \"\")
+                      }
+                      data={medicationOptions.map((m) => ({ value: m.name, label: m.name }))}
+                      placeholder=\"e.g., Amoxicillin 500mg\"
+                      required
+                      searchable
+                    />`
+    }
+  ],
+  `dryRun`: false
+}
+Response
+
+```diff
+Index: C:\Users\GoVC\Documents\github_pages\pres_app\src\components\PrescriptionForm\PrescriptionForm.tsx
+===================================================================
+--- C:\Users\GoVC\Documents\github_pages\pres_app\src\components\PrescriptionForm\PrescriptionForm.tsx	original
++++ C:\Users\GoVC\Documents\github_pages\pres_app\src\components\PrescriptionForm\PrescriptionForm.tsx	modified
+@@ -24,9 +24,10 @@
+   IconTrash,
+   IconPrinter,
+ } from "@tabler/icons-react";
+ import PrescriptionPrint from "./PrescriptionPrint";
+-import { Medication as MedicationData } from "../../pages/MedicationManagement/MedicationManagementPage";
++import { useData } from "../../context/DataContext";
++import { notifications } from "@mantine/notifications";
+ 
+ interface Medication {
+   id: string;
+   medication: string;
+@@ -52,9 +53,9 @@
+ }
+ 
+ export default function PrescriptionForm(): React.ReactElement {
+   const [isPrintModalOpen, setIsPrintModalOpen] = useState(false);
+-  const [medicationOptions, setMedicationOptions] = useState<MedicationData[]>([]);
++  const { medications, patients, addPrescription } = useData();
+   const [form, setForm] = useState<PrescriptionForm>({
+     patientName: "",
+     patientAge: "",
+     medications: [
+@@ -73,19 +74,9 @@
+     weight: "",
+   });
+ 
+   useEffect(() => {
+-    const storedMedications = localStorage.getItem("medications");
+-    if (storedMedications) {
+-      try {
+-        const parsed = JSON.parse(storedMedications);
+-        if (Array.isArray(parsed)) {
+-          setMedicationOptions(parsed);
+-        }
+-      } catch (e) {
+-        console.error("Error parsing medications from local storage:", e);
+-      }
+-    }
++    // Data is now available from context
+   }, []);
+ 
+   const frequencies: FrequencyOption[] = [
+     { value: "once_daily", label: "Once Daily" },
+@@ -95,10 +86,65 @@
+     { value: "as_needed", label: "As Needed" },
+   ];
+ 
+   const handleSubmit = (): void => {
+-    console.log("Prescription:", form);
+-    alert("Prescription saved successfully!");
++    if (!form.patientName || !form.doctorName || form.medications.some(med => !med.medication)) {
++      notifications.show({
++        title: "Error",
++        message: "Please fill in all required fields",
++        color: "red",
++      });
++      return;
++    }
++
++    try {
++      const prescriptionData = {
++        patientId: Date.now().toString(), // In a real app, this would be selected from patients
++        patientName: form.patientName,
++        doctorName: form.doctorName,
++        date: new Date(form.date),
++        medications: form.medications.map(med => ({
++          medicationId: medications.find(m => m.name === med.medication)?.id || '',
++          medicationName: med.medication,
++          dosage: med.dosage,
++          frequency: med.frequency,
++          duration: med.duration,
++          instructions: med.instructions,
++        })),
++        status: 'active' as const
++      };
++
++      addPrescription(prescriptionData);
++      notifications.show({
++        title: "Success",
++        message: "Prescription saved successfully!",
++        color: "green",
++      });
++
++      // Reset form
++      setForm({
++        patientName: "",
++        patientAge: "",
++        medications: [{
++          id: "1",
++          medication: "",
++          dosage: "",
++          frequency: "",
++          duration: "",
++          instructions: "",
++        }],
++        doctorName: "",
++        date: new Date().toISOString().split("T")[0],
++        gender: "",
++        weight: "",
++      });
++    } catch (error) {
++      notifications.show({
++        title: "Error",
++        message: "Failed to save prescription",
++        color: "red",
++      });
++    }
+   };
+ 
+   const handlePrint = () => {
+     window.print();
+@@ -247,9 +293,9 @@
+                       value={med.medication}
+                       onChange={(val) =>
+                         updateMedication(med.id, "medication", val || "")
+                       }
+-                      data={medicationOptions.map((m) => ({ value: m.name, label: m.name }))}
++                      data={medications.map((m) => ({ value: m.name, label: `${m.name} - ${m.dosage}` }))}
+                       placeholder="e.g., Amoxicillin 500mg"
+                       required
+                       searchable
+                     />
+```
